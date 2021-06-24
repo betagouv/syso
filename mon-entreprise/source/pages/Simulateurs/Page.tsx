@@ -14,6 +14,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { TrackChapter } from '../../ATInternetTracking'
 import { RessourceAutoEntrepreneur } from '../../pages/Créer/CreationChecklist'
 import useSimulatorsData, { SimulatorData } from './metadata'
+import ExportRecover from 'Components/simulationExplanation/ExportRecover'
 
 export default function PageData({
 	meta,
@@ -89,6 +90,7 @@ export default function PageData({
 				{!inIframe && (
 					<>
 						{seoExplanations}
+						<ExportRecover></ExportRecover>
 						<NextSteps
 							iframePath={privateIframe ? undefined : iframePath}
 							nextSteps={nextSteps}
@@ -118,7 +120,7 @@ function NextSteps({ iframePath, nextSteps }: NextStepsProps) {
 		return null
 	}
 	return (
-		<section>
+		<section className='print-display-none'>
 			<h2 className="ui__ h h3">
 				<Trans>Ressources utiles</Trans>
 			</h2>

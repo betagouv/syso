@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux'
 import { firstStepCompletedSelector } from 'Selectors/simulationSelectors'
 import { TrackPage } from '../ATInternetTracking'
 import SeeAnswersButton from './conversation/SeeAnswersButton'
+import ExportSimulationBanner from 'Components/ExportSimulationBanner'
 
 type SimulationProps = {
 	explanations?: React.ReactNode
@@ -21,6 +22,8 @@ type SimulationProps = {
 	children?: React.ReactNode
 	customEndMessages?: ConversationProps['customEndMessages']
 	showPeriodSwitch?: boolean
+	userWillExport:()=>void
+	disableAnimation: boolean
 }
 
 export default function Simulation({
@@ -29,6 +32,8 @@ export default function Simulation({
 	children,
 	customEndMessages,
 	showPeriodSwitch,
+	userWillExport,
+	disableAnimation,
 }: SimulationProps) {
 	const firstStepCompleted = useSelector(firstStepCompletedSelector)
 
@@ -46,6 +51,7 @@ export default function Simulation({
 					<Animate.fromTop>
 						{results}
 						<ShareSimulationBanner />
+						<ExportSimulationBanner userWillExport={userWillExport} disableAnimation={disableAnimation}/>
 						<Questions customEndMessages={customEndMessages} />
 						<br />
 						<div className="ui__ full-width">
@@ -68,7 +74,7 @@ export default function Simulation({
 									</>
 								)}
 								<div
-									className="ui__ side-block"
+									className="ui__ side-block print-display-none"
 									css={!explanations ? 'justify-content: center;' : ''}
 								>
 									<div
@@ -104,7 +110,7 @@ export function Questions({
 	const progress = useSimulationProgress()
 
 	return (
-		<>
+		<div className='print-display-none'>
 			<section className="ui__ full-width lighter-bg">
 				<div className="ui__ container">
 					<div
@@ -141,6 +147,6 @@ export function Questions({
 			{progress < 1 && (
 				<Progress progress={progress} className="ui__ full-width" />
 			)}
-		</>
+		</div>
 	)
 }

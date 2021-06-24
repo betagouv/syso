@@ -9,7 +9,11 @@ import { useContext, useRef } from 'react'
 import emoji from 'react-easy-emoji'
 import { Trans, useTranslation } from 'react-i18next'
 
-export default function SalaryExplanation() {
+interface SalaryExplanationProps {
+	disableAnimation: boolean
+}
+
+export default function SalaryExplanation({disableAnimation,}: SalaryExplanationProps) {
 	const payslipRef = useRef<HTMLDivElement>(null)
 
 	if (useInversionFail()) {
@@ -25,9 +29,10 @@ export default function SalaryExplanation() {
 						block: 'start',
 					})
 				}
+				disableAnimation={disableAnimation}
 			/>
 
-			<DistributionSection />
+			<DistributionSection disableAnimation={disableAnimation}/>
 			<div ref={payslipRef}>
 				<PaySlipSection />
 			</div>
@@ -56,7 +61,7 @@ export default function SalaryExplanation() {
 	)
 }
 
-function RevenueRepartitionSection(props: { onSeePayslip: () => void }) {
+function RevenueRepartitionSection(props: { onSeePayslip: () => void; disableAnimation:boolean }) {
 	const { t } = useTranslation()
 	const { palettes } = useContext(ThemeColorsContext)
 
@@ -78,7 +83,7 @@ function RevenueRepartitionSection(props: { onSeePayslip: () => void }) {
 					</Trans>
 				</h2>
 				<button
-					className="ui__ small simple button"
+					className="ui__ small simple button print-display-none"
 					onClick={props.onSeePayslip}
 				>
 					{emoji('📊')} <Trans>Voir la fiche de paie</Trans>
@@ -101,6 +106,7 @@ function RevenueRepartitionSection(props: { onSeePayslip: () => void }) {
 						color: palettes[1][1],
 					},
 				]}
+				disableAnimation={props.disableAnimation}
 			/>
 		</section>
 	)
@@ -108,7 +114,7 @@ function RevenueRepartitionSection(props: { onSeePayslip: () => void }) {
 
 function PaySlipSection() {
 	return (
-		<section>
+		<section className="print-break-avoid">
 			<h2>
 				<Trans>Fiche de paie</Trans>
 			</h2>
@@ -118,11 +124,13 @@ function PaySlipSection() {
 }
 
 export const DistributionSection = ({
-	children = <Distribution />,
+	disableAnimation,
+	children = <Distribution disableAnimation={disableAnimation} />,
 }: {
+	disableAnimation:boolean
 	children?: React.ReactNode
 }) => (
-	<section>
+	<section className="print-break-avoid">
 		<h2>
 			<Trans>À quoi servent mes cotisations ?</Trans>
 		</h2>
@@ -136,4 +144,5 @@ export const DistributionSection = ({
 			</Trans>
 		</p>
 	</section>
+
 )

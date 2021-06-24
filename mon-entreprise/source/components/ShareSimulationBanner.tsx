@@ -8,23 +8,23 @@ import { TrackingContext } from '../ATInternetTracking'
 import Banner from './Banner'
 import { useParamsFromSituation } from './utils/useSearchParamsSimulationSharing'
 
+export function GetUrl(){
+	const situation = useSelector(situationSelector);
+	const searchParams = useParamsFromSituation(situation);
+	searchParams.set('utm_source', 'sharing');
+	return[
+		window.location.origin,
+		window.location.pathname,
+		'?',
+		searchParams.toString(),
+	].join('');
+}
+
 export default function ShareSimulationBanner() {
 	const [opened, setOpened] = useState(false)
 	const { t } = useTranslation()
 	const tracker = useContext(TrackingContext)
-	const situation = useSelector(situationSelector)
-	const searchParams = useParamsFromSituation(situation)
-	searchParams.set('utm_source', 'sharing')
-
 	const shareAPIAvailable = !!window?.navigator?.share
-
-	const getUrl = () =>
-		[
-			window.location.origin,
-			window.location.pathname,
-			'?',
-			searchParams.toString(),
-		].join('')
 
 	const startSharing = () => {
 		if (shareAPIAvailable) {
@@ -35,7 +35,7 @@ export default function ShareSimulationBanner() {
 						'shareSimulation.navigatorShare',
 						'Ma simulation Mon Entreprise'
 					),
-					url: getUrl(),
+					url: GetUrl(),
 				})
 			} catch {
 				setOpened(true)
@@ -46,7 +46,7 @@ export default function ShareSimulationBanner() {
 	}
 
 	return (
-		<Banner hideAfterFirstStep={false} icon="💬">
+		<Banner hideAfterFirstStep={false} icon="💬" className='print-display-none'>
 			{opened ? (
 				<Animate.fromTop>
 					<div>
@@ -66,7 +66,7 @@ export default function ShareSimulationBanner() {
 								simulation.
 							</Trans>
 						</p>
-						<ShareSimulationPopup url={getUrl()} />
+						<ShareSimulationPopup url={GetUrl()} />
 					</div>
 				</Animate.fromTop>
 			) : (
