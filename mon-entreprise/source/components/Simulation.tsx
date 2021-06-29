@@ -39,7 +39,6 @@ export default function Simulation({
 		<>
 			{simulationBloc}
 
-			<SearchButton invisibleButton />
 			{!firstStepCompleted && <TrackPage name="accueil" />}
 			{firstStepCompleted && (
 				<>
