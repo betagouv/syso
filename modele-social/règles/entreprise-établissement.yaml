@@ -535,20 +535,54 @@ entreprise . charges:
     Charges déductibles ou non du résultat fiscal d'une entreprise: https://www.service-public.fr/professionnels-entreprises/vosdroits/F31973
   par défaut: 0 €/an
 
-     
 
 entreprise . charges . dirigeant:
   titre: Charges déductibles dirigeant
   description: Les montants liés à la rémunération du dirigeant qui sont déductibles d'impôt.
-  variations: 
-    - si: imposition . IS 
+  variations:
+    - si: imposition . IS
       alors: dirigeant . rémunération . totale
     # Note : le cas de dirigeant AS à l'IR n'est pas géré
-    # - si: dirigeant . assimilé salarié 
+    # - si: dirigeant . assimilé salarié
     #   alors: 0€/an
     - sinon: # TNS dans entreprise à l'IR
         valeur: dirigeant . indépendant . cotisations et contributions
         abattement: dirigeant . indépendant . cotisations et contributions . non déductibles
+
+
+entreprise . solde exercice précédent:
+  valeur: mise en réserve + dividendes
+  unité: €/an
+  titre: solde de l'exercice passé
+  question: Quel est le solde à l'issue de l'exercice de la société ?
+
+entreprise . mise en réserve:
+  par défaut: 0 €/an
+  unité: €/an
+  titre: montants mis en réserve
+  question: Quels sont les montants que vous mettez en réserve ?
+
+entreprise . alerte mise en réserve:
+  type: notification
+  sévérité: avertissement
+  valeur: mise en réserve = 0 # TODO: se baser sur le capital social
+  description: |
+    Toute société est tenue de mettre en réserve au moins 10% du capital
+    social. Tant que ce n'est pas le cas, elle doit prélever au minimum 5% de
+    son bénéfice net annuel (avant dividendes).
+
+entreprise . dividendes:
+  valeur: solde exercice précédent - mise en réserve
+  unité: €/an
+  arrondi: oui
+  titre: dividendes versés
+  question: Quels sont les dividendes que vous souhaitez vous verser ?
+
+entreprise . valorisation:
+  description: |
+    Valeur marchande des titres de la société (actions ou parts).
+
+    Cette valeur doit inclure la valeur du capital social ainsi que des primes d'émission.
 
 entreprise . ACRE:
   description: >-

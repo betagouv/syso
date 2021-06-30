@@ -7,6 +7,7 @@ impôt:
         assiette: revenu imposable
         taux: taux d'imposition
     - dirigeant . auto-entrepreneur . impôt . versement libératoire . montant
+    - bénéficiaire . dividendes . pfu
   arrondi: oui
   unité: €/an
 
@@ -74,8 +75,18 @@ impôt . revenu imposable:
     - si: dirigeant
       alors: dirigeant . rémunération . imposable
     - sinon: 
-        valeur: contrat salarié . rémunération . net imposable      
+        somme:
+          - contrat salarié . rémunération . net imposable
+          - bénéficiaire . dividendes . montant imposable au barème
         abattement: abattement contrat court
+
+impôt . revenu imposable . acompte dividendes:
+  description: |
+    Acompte à verser au moment du versement des dividendes.
+
+    Cet acompte n'est pas obligatoire au cas où le revenu fiscal n-2 est suffisamment bas. 
+    Dans ce cas, le bénéficiaire peut faire la demande de dispense au plus tard le 30 novembre 
+    de l'année précédant celle du paiement
 
 impôt . revenu imposable . abattement contrat court:
   description: Lorsque la durée d'un contrat de travail est inférieure à 2 mois, il est possible d'appliquer un abattement pour diminuer le montant du prélèvement à la source.
@@ -453,7 +464,7 @@ impôt . foyer fiscal . impôt sur le revenu . impôt brut par part:
     Voici le fameux barème de l'impôt sur le revenu. C'est un barème marginal à 5 tranches.
     Une contribution sur les hauts revenus ajoute deux tranches supplémentaires.
 
-    Attention : pour un revenu de 100 000€ annuels, le contribuable ne paiera 41 000€ d'impôt (le taux de la 4ème tranche est 41%) ! Ces 41% sont appliqués uniquement à la part de ses revenus supérieure à 72 617€.
+    Attention : pour un revenu de 100 000€ annuels, le contribuable ne paiera pas 41 000€ d'impôt (le taux de la 4ème tranche est 41%) ! Ces 41% sont appliqués uniquement à la part de ses revenus supérieure à 72 617€.
   formule:
     barème:
       assiette: quotient familial
