@@ -1,0 +1,148 @@
+bénéficiaire:
+  valeur: oui
+  description: |
+    Un bénéficiaire est un actionnaire dans une SAS ou un associé dans une SARL/EURL.
+
+    Attention: nous ne prenons en compte ici que le cas de figure de l'associé unique (SASU et EURL).
+
+bénéficiaire . compte courant d'associé:
+  par défaut: 0€
+  titre: Sommes versées en compte courant d'associé
+  description: >
+    Cette valeur est nécessaire à calculer le montant maximal imposable au PFU
+    pour un bénéficiaire au régime des travailleurs indépendants.
+
+    Le montant pris en compte est le solde moyen annuel du compte courant. Il
+    est déterminé par la somme des soldes moyens mensuels du compte, divisée par
+    le nombre de mois compris dans l’exercice.
+
+    Le solde moyen mensuel est égal à l’addition des soldes journaliers, divisée
+    par le nombre de jours dans le mois. Le solde moyen mensuel diffère donc du
+    solde mensuel figurant dans les comptes de la société.
+
+    En cas d’ouverture ou de clôture du compte en cours d’exercice, le nombre de
+    mois au cours de l’exercice sera réduit au nombre de mois de fonctionnement
+    du compte. Un compte est considéré comme « fonctionnant », même s’il n’est
+    pas mouvementé au cours de l’exercice.  La date à laquelle les sommes
+    versées en compte courant doivent être appréciées est le dernier jour de
+    l’exercice précédant le versement des intérêts.
+  références:
+    Circulaire RSI C2014-001: https://www.secu-independants.fr/uploads/tx_rsirss/C2014-001.pdf
+
+bénéficiaire . dividendes:
+  valeur: oui
+  non applicable si: entreprise . imposition = 'IR'
+
+# on ne prend en compte pour l'instant que le cas entreprise unipersonnelle
+bénéficiaire . dividendes . versés: entreprise . dividendes
+
+bénéficiaire . dividendes . option barème:
+  par défaut: non
+  titre: Option pour l'imposition au barème progressif
+  description: |
+    Vous pouvez opter pour l'imposition au barème progressif de l'impôt sur le revenu si vous le souhaitez.
+
+    Attention: cette option est irrévocable, et doit être prise pour l'ensemble des revenus de capitaux mobiliers et gains en capital de l'année.
+
+    Il s'agit d'exercer cette option lors du dépôt de la déclaration des revenus et au plus tard avant l'expiration de la date limite de déclaration.
+
+# [XXX] ceci est basé sur la CSG déductible, donc faire le lien avec dirigeant . indépendant . cotisations et contributions . CSG et CRDS . déductible . taux
+bénéficiaire . dividendes . abattement fiscal: 6.8%
+
+# on considère l'abattement de 40% toujours applicable car on parle de dividendes
+# décidés en AG. Le préciser dans un encart
+bénéficiaire . dividendes . abattement fiscal 40% applicable:
+  par défaut: oui
+  remplace:
+    règle: abattement fiscal
+    par: abattement fiscal + 40%
+  titre: Est-ce que l'abattement fiscal de 40% sur les dividendes est applicable ?
+  description: |
+    Cet abattement est applicable dans le cas où
+
+    - la société distributrice des dividendes relève de l'IS
+    - la société distributrice est française ou a son siège en UE ou dans un état ayant conclu des accords en ce sens avec la France
+    - les dividendes sont décidés en assemblée générale.
+
+    Cet abattement est considéré comme applicable par défaut ici.
+
+bénéficiaire . dividendes . montant imposable au barème:
+  valeur: versés
+  abattement: abattement fiscal
+  par défaut: 0 €/an
+  applicable si: option barème
+
+bénéficiaire . dividendes . assiette forfaitaire:
+  variations:
+    - si: option barème
+      alors: 0
+    - si: dirigeant = 'indépendant'
+      alors:
+        le minimum de:
+          - (entreprise . valorisation + compte courant d'associé) * 10%
+          - versés
+    - sinon: versés
+  titre: Assiette des dividendes soumis aux cotisations et contributions au PFU (ou
+    _flat tax_)
+  description: |
+    Ce calcul extrait l'assiette des dividendes qui sont soumis au PFU en termes de cotisations
+    et contributions.
+  références:
+    - Article L131-6 du Code de la Sécurité Sociale: https://www.legifrance.gouv.fr/codes/id/LEGISCTA000033714224/
+
+bénéficiaire . dividendes . assiette revenus d'activité:
+  valeur: versés - assiette forfaitaire
+  par défaut: 0 €/an
+  titre: Assiette des dividendes soumis aux cotisations et contributions des revenus
+    d'activité
+  description: |
+    Cette assiette représente la partie des dividendes qui n'est pas soumise au PFU mais aux
+    cotisations et contributions des revenus d'activité au même titre qu'un salaire par exemple.
+
+bénéficiaire . dividendes . pfu:
+  non applicable si: option barème
+  valeur: cotisations et contributions + impôt
+  par défaut: 0 €/an
+  titre: Prélèvement Forfaitaire Unique (ou _flat tax_)
+  références:
+    - Article 200 A du Code Général des Impôts: https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006179579/
+    - Fiche service-public.fr: https://www.service-public.fr/professionnels-entreprises/vosdroits/F32963
+
+bénéficiaire . dividendes . pfu . impôt:
+  produit:
+    assiette: versés
+    taux: 12.8%
+  description: |
+    Ce montant est à verser sous forme d'acompte au moment du versement des dividendes.
+
+    L'acompte n'est pas obligatoire au cas où le revenu fiscal n-2 est inférieur à
+
+      - 50 000 € pour une personne seule,
+      - 75 000 € pour un couple soumis à l'imposition commune (mariés ou pacsés).
+
+    Dans ce cas, le bénéficiaire peut faire la demande de dispense au plus tard le 30 novembre 
+    de l'année précédant celle du paiement
+  références:
+    Article 117 quater du Code Général des Impôts: https://www.legifrance.gouv.fr/codes/id/LEGIARTI000036428175/#LEGIARTI000036428175
+
+bénéficiaire . dividendes . pfu . cotisations et contributions:
+  produit:
+    assiette: assiette forfaitaire
+    taux: 17.2%
+
+bénéficiaire . dividendes . impôt:
+  variations:
+    - si: option barème
+      alors: 0 €/an # [XXX]
+    - sinon: pfu . impôt
+
+bénéficiaire . dividendes . cotisations et contributions:
+  variations:
+    - si: option barème
+      alors: 0 €/an # [XXX]
+    - sinon: pfu . cotisations et contributions
+
+bénéficiaire . dividendes . net:
+  valeur: versés - dividendes . cotisations et contributions - dividendes . impôt
+  titre: Dividendes nets de cotisations et d'impôts
+  description: Ce que perçoit _in fine_ le bénéfiaire.

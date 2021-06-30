@@ -164,6 +164,8 @@ exports[`calculate simulations-auto-entrepreneur: échelle de revenus 10`] = `
 Notifications affichées : entreprise . chiffre d'affaires . franchise de TVA . dépassement, entreprise . imposition . IR . micro-fiscal . alerte seuil dépassés"
 `;
 
+exports[`calculate simulations-dividendes: pfu 1`] = `"[256,344]"`;
+
 exports[`calculate simulations-impot-société: bénéfices 1`] = `
 "[0,0]
 Notifications affichées : entreprise . imposition . IS . information sur le report de déficit"

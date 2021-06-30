@@ -23,6 +23,7 @@ import independentSituations from './simulations-indépendant.yaml'
 import professionsLibéralesSituations from './simulations-professions-libérales.yaml'
 import remunerationDirigeantSituations from './simulations-rémunération-dirigeant.yaml'
 import employeeSituations from './simulations-salarié.yaml'
+import dividendesSituations from './simulations-dividendes.yaml'
 
 const roundResult = (arr) => arr.map((x) => Math.round(x))
 const engine = engineFactory(rules)
@@ -172,6 +173,19 @@ it('calculate simulations-impot-société', () => {
 			'entreprise . imposition': "'IS'",
 			'entreprise . imposition . IS . impôt sur les sociétés . éligible taux réduit':
 				'oui',
+		}
+	)
+})
+
+it('calculate simulations-dividendes', () => {
+	runSimulations(
+		dividendesSituations,
+		[
+			'bénéficiaire . dividendes . impôt',
+			'bénéficiaire . dividendes . cotisations et contributions',
+		],
+		{
+			'entreprise . imposition': "'IS'",
 		}
 	)
 })
