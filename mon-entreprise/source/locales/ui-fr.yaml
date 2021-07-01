@@ -1,7 +1,7 @@
-"404":
+'404':
   action: Revenir en lieu sûr
   message: Cette page n'existe pas ou n'existe plus
-"<0></0> Pour en savoir plus, rendez-vous sur le site <3>aquoiserventlescotisations":
+'<0></0> Pour en savoir plus, rendez-vous sur le site <3>aquoiserventlescotisations':
   urssaf:
     fr</3>: <0></0> Pour en savoir plus, rendez-vous sur le site
       <3>aquoiserventlescotisations.urssaf.fr</3>
@@ -75,7 +75,7 @@ Tout le site: Tout le site
 Travailleurs Non Salariés (TNS): Travailleurs Non Salariés (TNS)
 Un seul associé: Un seul associé
 Une idée&nbsp;?<1></1>Contactez-nous&nbsp;!: Une idée&nbsp;?<1></1>Contactez-nous&nbsp;!
-"Versement : ": "Versement : "
+'Versement : ': 'Versement : '
 Voir la fiche Urssaf: Voir la fiche Urssaf
 Voir la fiche de paie: Voir la fiche de paie
 Voir les autres simulateurs: Voir les autres simulateurs
@@ -99,8 +99,9 @@ aide-déclaration-indépendant:
     de déterminer le type de déclaration à remplir, ainsi que les modalités de
     calcul des cotisations sociales.</4>
   entreprise:
-    description: "<0>Facultatif : </0>Vous pouvez renseigner votre entreprise pour
-      pré-remplir le formulaire"
+    description:
+      '<0>Facultatif : </0>Vous pouvez renseigner votre entreprise pour
+      pré-remplir le formulaire'
     titre: <0>Entreprise et activité</0>
   results:
     title: Vos déclarations fiscales
@@ -114,20 +115,22 @@ après:
       et maladies professionnelles à payer.</6><7>En cas de code APE erroné,
       vous pouvez <2>demander une modification</2> à l'INSEE.</7>
     titre: Le code APE
-  intro: "Une fois votre {{statutChoisi}} créée, vous recevez les informations
-    suivantes :"
+  intro: 'Une fois votre {{statutChoisi}} créée, vous recevez les informations
+    suivantes :'
   kbis:
     description:
-      "1": C'est le document officiel qui atteste de <2>l'existence légale d'une
+      '1': C'est le document officiel qui atteste de <2>l'existence légale d'une
         entreprise commerciale</2>. Le plus souvent, pour être valable par les
         procédures administratives, il doit dater de moins de 3 mois. <5>Plus
         d'infos.</5>
-      "2": Ce document est généralement demandé lors de la candidature à un appel
+      '2':
+        Ce document est généralement demandé lors de la candidature à un appel
         d'offre public, de l'ouverture d'un compte bancaire, d'achats
         d'équipement professionnel auprès de fournisseurs, etc.
     titre: Le Kbis
   siret:
-    description: Le numéro SIREN <1>est l'identifiant de votre entreprise</1> tandis
+    description:
+      Le numéro SIREN <1>est l'identifiant de votre entreprise</1> tandis
       que le numéro SIRET identifie chaque établissement de la même entreprise.
       Le SIRET commence par le SIREN, auquel on ajoute le numéro d'établissement
       (NIC).
@@ -136,7 +139,8 @@ après:
 associés:
   choix1: Seul
   choix2: Plusieurs personnes
-  description: "<0>Une entreprise avec un seul associé est plus simple à créer et
+  description:
+    "<0>Une entreprise avec un seul associé est plus simple à créer et
     gérer. Un associé peut-être une personne physique (un individu) ou une
     personne morale (par exemple une société).</0><1>Note : ce choix n'est pas
     définitif. Vous pouvez tout à fait commencer votre société seul, et
@@ -164,7 +168,8 @@ autoentrepreneur:
   titre: Entreprise individuelle ou auto-entrepreneur
 back: Reprendre la simulation
 comparaisonRégimes:
-  ACRE: <0>ACRE</0><1>1 an <1>(automatique et inconditionnelle)</1></1><2>Entre 3
+  ACRE:
+    <0>ACRE</0><1>1 an <1>(automatique et inconditionnelle)</1></1><2>Entre 3
     et 4 trimestres <2>(sous conditions d'éligibilité)</2></2>
   AS:
     tagline: Le régime tout compris
@@ -187,7 +192,8 @@ comparaisonRégimes:
     agrée...)</1></1><2>Simplifiée <2>(peut être gérée par
     l'auto-entrepreneur)</2></2>
   cotisationMinimale: <0>Paiement de cotisations minimales</0>
-  cotisations: <0>Paiement des cotisations</0><1>Mensuel</1><2>Provision mensuelle
+  cotisations:
+    <0>Paiement des cotisations</0><1>Mensuel</1><2>Provision mensuelle
     ou trimestrielle<1>(avec régularisation après coup en fonction du revenu
     réel)</1></2><3>Mensuel ou trimestriel</3>
   description: Lorsque vous créez votre société, le choix du statut juridique va
@@ -209,9 +215,11 @@ comparaisonRégimes:
     infobulles:
       AS: Pension calculée pour 172 trimestres cotisés au régime général sans
         variations de revenus.
-      auto: Pension calculée pour 172 trimestres cotisés en auto-entrepreneur sans
+      auto:
+        Pension calculée pour 172 trimestres cotisés en auto-entrepreneur sans
         variations de revenus.
-      indep: Pension calculée à titre indicatif pour 172 trimestres cotisés au régime
+      indep:
+        Pension calculée à titre indicatif pour 172 trimestres cotisés au régime
         des indépendants sans variations de revenus.
     legend: <0>Pension de retraite</0><1>(avant impôts)</1>
   revenuNetAvantImpot: <0>Revenu net de cotisations <1>(avant impôts)</1></0>
@@ -224,10 +232,10 @@ comparaisonRégimes:
     AS: SAS, SASU ou SARL avec gérant minoritaire
     auto: Auto-entreprise
     indep:
-      "1": EI, EIRL, EURL ou SARL avec gérant majoritaire
-      "2": EI ou EIRL
+      '1': EI, EIRL, EURL ou SARL avec gérant majoritaire
+      '2': EI ou EIRL
     legend: Statuts juridiques possibles
-  titreSelection: "Créer mon entreprise en tant que :"
+  titreSelection: 'Créer mon entreprise en tant que :'
   trimestreValidés: <0>Nombre de trimestres validés <1>(pour la retraite)</1></0>
 créer:
   cta:
@@ -239,10 +247,12 @@ créer:
     autoEntrepreneur: <0>Démarche auto-entrepreneur</0><1>Vous souhaitez devenir
       auto-entrepreneur ? Découvrez les étapes pour bien démarrer votre
       activité</1>
-    comparaison: <0>Comparateur de régimes</0><1>Indépendant, assimilé-salarié ou
+    comparaison:
+      <0>Comparateur de régimes</0><1>Indépendant, assimilé-salarié ou
       auto-entrepreneur ? Calculez les différences en terme de revenus,
       cotisations, retraite, etc</1>
-    listeStatuts: <0>Liste des statuts juridiques</0><1>Vous savez déjà quel statut
+    listeStatuts:
+      <0>Liste des statuts juridiques</0><1>Vous savez déjà quel statut
       choisir ? Accédez directement à la liste des démarches associées</1>
   titre: Créer une entreprise
   warningPL: Le cas des professions libérales réglementées n'est pas encore traité
@@ -258,7 +268,8 @@ embauche:
     pour vous.</0><1>Remettre la fiche de paie à votre employé</1></1>
   tâches:
     complémentaire santé:
-      description: Vous devez couvrir vos salariés avec l'assurance complémentaire
+      description:
+        Vous devez couvrir vos salariés avec l'assurance complémentaire
         santé privée de votre choix (aussi appelée "mutuelle"), pour autant
         qu'elle offre un ensemble de garanties minimales. L'employeur doit payer
         au moins la moitié du forfait.
@@ -267,12 +278,14 @@ embauche:
       titre: Signer un contrat de travail avec votre employé
     description: Toutes les étapes nécessaires à l'embauche de votre premier employé.
     dpae:
-      description: Ceci peut être fait par le biais du formulaire appelé DPAE, doit
+      description:
+        Ceci peut être fait par le biais du formulaire appelé DPAE, doit
         être complété dans les 8 jours avant toute embauche, et peut <2>être
         effectué en ligne</2>.
       titre: Déclarer l'embauche à l'administration sociale
     logiciel de paie:
-      description: Les fiches de paie et les déclarations peuvent être traitées en
+      description:
+        Les fiches de paie et les déclarations peuvent être traitées en
         ligne gratuitement par le <2>Tese</2>. Vous pouvez aussi utiliser un
         <5>logiciel de paie privé.</5>
       titre: Choisir un logiciel de paie
@@ -298,24 +311,29 @@ entreprise:
       glossaire des termes que vous pourrez (éventuellement) rencontrer après la
       création.</1>
     simu:
-      assimilé: <0>Simulateur de rémunération pour dirigeant de SASU</0><1>Simuler le
+      assimilé:
+        <0>Simulateur de rémunération pour dirigeant de SASU</0><1>Simuler le
         montant de vos cotisations sociales pour bien préparer votre business
         plan.</1>
-      autoEntrepreneur: <0>Simulateur de revenus auto-entrepreneur</0><1>Simuler le
+      autoEntrepreneur:
+        <0>Simulateur de revenus auto-entrepreneur</0><1>Simuler le
         montant de vos cotisations sociales et de votre impôt et estimez votre
         futur revenu net.</1>
-      indépendant: <0>Simulateur de cotisations indépendant</0><1>Simuler le montant
+      indépendant:
+        <0>Simulateur de cotisations indépendant</0><1>Simuler le montant
         de vos cotisations sociales pour bien préparer votre business plan.</1>
   retour: ← Choisir un autre statut
   tâches:
     adresse:
-      description: <0><0>L'adresse</0> est l'espace physique où votre entreprise sera
+      description:
+        <0><0>L'adresse</0> est l'espace physique où votre entreprise sera
         incorporée. Dans certains lieux et certaines situations, vous pouvez
         bénéficier d'un financement public important (exonération de charges, de
         taxes, etc.). <3>Plus d'infos</3></0>
       titre: Choisir une adresse pour le siège
     affectation:
-      description: "<0>La <1>déclaration d'affectation du patrimoine</1> permet de
+      description:
+        "<0>La <1>déclaration d'affectation du patrimoine</1> permet de
         séparer le patrimoine professionnel de votre patrimoine personnel, qui
         devient alors insaisissable. Cette démarche est gratuite si elle est
         effectué au moment de la création d'entreprise.</0><1>Pour cela, il
@@ -327,7 +345,8 @@ entreprise:
         dépasse pas les 30 000 €.</1><2><0>Plus d'informations</0></2>"
       titre: Effectuer une déclaration d'affectation de patrimoine
     assurance:
-      description: <0>Une PME ou un travailleur indépendant doit se protéger contre
+      description:
+        <0>Une PME ou un travailleur indépendant doit se protéger contre
         les principaux risques auxquels il est exposé et souscrire des contrats
         de garantie. Qu'elle soit locataire ou propriétaire de ses murs,
         l'entreprise doit assurer ses immeubles, son matériel professionnel, ses
@@ -340,16 +359,19 @@ entreprise:
       navigateur.
     banque:
       description:
-        "1": Le but d'un <1>compte bancaire d'entreprise</1> est de séparer les actifs
+        '1':
+          Le but d'un <1>compte bancaire d'entreprise</1> est de séparer les actifs
           de l'entreprise des vôtres.
-        "2": "Le compte d'entreprise vous permet de :"
-        EI: "Si son ouverture n'est pas obligatoire pour un IE, elle reste fortement
+        '2': "Le compte d'entreprise vous permet de :"
+        EI:
+          "Si son ouverture n'est pas obligatoire pour un IE, elle reste fortement
           recommandée. "
         liste: <0>Différencier vos opérations privées et
           professionnelles</0><1>Faciliter les déclarations fiscales</1>
       titre: Ouvrir un compte bancaire
     capital:
-      description: <0>Le <1>dépôt du capital social</1> doit être fait au moment de la
+      description:
+        <0>Le <1>dépôt du capital social</1> doit être fait au moment de la
         constitution d'une société par une personne agissant au nom de la
         société et ayant reçu des apports en numéraire (somme d'argent) de la
         part des créanciers de la société (actionnaire ou associé).</0><1>Le
@@ -366,12 +388,14 @@ entreprise:
     formeJuridique:
       titre: Choisir la forme juridique
     formulaire:
-      description: <0>Vous pouvez faire votre inscription en ligne à tout moment,
+      description:
+        <0>Vous pouvez faire votre inscription en ligne à tout moment,
         l'enregistrer et y revenir comme vous le souhaitez.</0><1><0>Faire la
         démarche en ligne</0></1>
       titre: Créer mon entreprise en ligne
     journal:
-      description: "<0>Vous devez publier la création de votre entreprise dans un
+      description:
+        "<0>Vous devez publier la création de votre entreprise dans un
         journal d'annonces légales (« JAL »), pour un coût de publication qui
         dépend du volume de l'annonce et des tarifs pratiqués par le journal
         choisi </0><1><0>Trouver un journal d'annonces légales
@@ -384,7 +408,8 @@ entreprise:
         du RCS auprès duquel la société est immatriculée</7></3>"
       titre: Publier une annonce de création dans un journal
     nom:
-      description: <0><0>La dénomination sociale</0> est le nom de votre entreprise
+      description:
+        <0><0>La dénomination sociale</0> est le nom de votre entreprise
         aux yeux de la loi, écrit sur tous vos documents administratifs. Il peut
         être différent de votre nom commercial.</0><1>Il est conseillé de
         vérifier que le nom est disponible, c'est-à-dire qu'il ne porte pas
@@ -393,11 +418,13 @@ entreprise:
         dans la base de données <1>INPI</1>.</1>
       titre: Trouver un nom d'entreprise
     objetSocial:
-      description: L'<1>objet social</1> est l'activité principale de l'entreprise.
+      description:
+        L'<1>objet social</1> est l'activité principale de l'entreprise.
         Une activité secondaire peut être enregistrée.
       titre: Déterminer l'objet social
     statuts:
-      description: Il s'agit d'un document officiel qui intègre la forme juridique,
+      description:
+        Il s'agit d'un document officiel qui intègre la forme juridique,
         nomme les associés et leurs contributions au capital. <2>Dans le cas
         d'une création d'entreprise avec plusieurs associés, il est recommandé
         de faire appel à un juriste pour les rédiger. </2>
@@ -412,9 +439,10 @@ feedback:
   simulator: Êtes-vous satisfait de ce simulateur&nbsp;?
   thanks: Merci de votre retour !
 footer:
-  accessibilité: "Accessibilité : non conforme"
+  accessibilité: 'Accessibilité : non conforme'
 formeJuridique:
-  EI: Aucun apport en capital n'est nécessaire. Le capital privé et le capital de
+  EI:
+    Aucun apport en capital n'est nécessaire. Le capital privé et le capital de
     l'entreprise ne font qu'un.
   EIRL: Permet d'attribuer un capital spécifique à son activité professionnelle,
     et de choisir le régime d'imposition sur les société (IS) plutôt que revenu
@@ -428,7 +456,8 @@ formeJuridique:
   SA: Société ayant au moins deux actionnaires. C'est le seul statut qui permet
     d'être coté en bourse (à partir de 7 actionnaires). Le capital social
     minimum est de 37.000 €.
-  SARL: Société ayant au moins deux associés dont la responsabilité financière est
+  SARL:
+    Société ayant au moins deux associés dont la responsabilité financière est
     limitée au montant de leur apport au capital. Le capital minimum est fixé
     librement dans les statuts. Les associés se répartissent des parts sociales
     toutes identiques, et la société est dirigée par un ou plusieurs gérants qui
@@ -444,10 +473,12 @@ formeJuridique:
   SASU: L'entreprise n'a qu'un associé. La responsabilité est limitée au montant
     de l'apport de capital de l'unique associé (qui peut être une personne
     morale).
-  SNC: La responsabilité des associés pour les dettes de la société est solidaire
+  SNC:
+    La responsabilité des associés pour les dettes de la société est solidaire
     (un seul associé peut être poursuivi pour la totalité de la dette) et
     indéfinie (responsable sur la totalité de son patrimoine personnel).
-  micro: Un auto-entrepreneur exerce son activité en entreprise individuelle, avec
+  micro:
+    Un auto-entrepreneur exerce son activité en entreprise individuelle, avec
     un régime forfaitaire pour ses cotisations sociales et un calcul spécifique
     de l'impôt.
   micro-EIRL: Un auto-entrepreneur option EIRL exerce son activité en entreprise
@@ -463,7 +494,8 @@ gérant minoritaire:
     minoritaire ou égalitaire (ou faites partie d'un conseil d'administration
     minoritaire ou égalitaire).</1></1>"
   page:
-    description: Certaines règles particulières s'appliquent en fonction du nombre
+    description:
+      Certaines règles particulières s'appliquent en fonction du nombre
       d'actions détenues par l'administrateur, ce qui peut conduire à un statut
       différent lors de la création de votre société
     titre: Gérant majoritaire ou minoritaire
@@ -473,22 +505,26 @@ gérer:
     chomage-partiel: <0>Activité partielle</0><1>Calculez le reste à payer après
       remboursement de l'État lorsque vous activez le dispositif pour un
       employé.</1>
-    déclaration: <0>Remplir ma déclaration de revenus</0><1>Calculez facilement les
+    déclaration:
+      <0>Remplir ma déclaration de revenus</0><1>Calculez facilement les
       montants des charges sociales à reporter dans votre déclaration de revenu
       au titre de 2020</1>
-    embauche: <0>Estimer le montant d’une embauche</0><1>Calculez le montant total
+    embauche:
+      <0>Estimer le montant d’une embauche</0><1>Calculez le montant total
       que votre entreprise devra dépenser pour rémunérer votre prochain
       employé</1>
-    is: <0>Estimer le montant de l’impôt sur les sociétés</0><1>Calculez le montant
+    is:
+      <0>Estimer le montant de l’impôt sur les sociétés</0><1>Calculez le montant
       de l'impôt sur les sociétés à partir de votre bénéfice.</1>
-    revenus: <0>Calculer mon revenu net de cotisations</0><1>Estimez précisément le
+    revenus:
+      <0>Calculer mon revenu net de cotisations</0><1>Estimez précisément le
       montant de vos cotisations grâce au simulateur {{régime}} de l'Urssaf</1>
   cta: Renseigner mon entreprise
   description: Vous souhaitez vous verser un revenu ou embaucher ? <1></1>Vous
     aurez à payer des cotisations et des impôts. <3></3>Anticipez leurs montants
     grâce aux simulateurs adaptés à votre situation.
   entreprise:
-    auto: "Êtes-vous auto-entrepreneur ? "
+    auto: 'Êtes-vous auto-entrepreneur ? '
     changer: Changer l'entreprise sélectionnée
     dirigeant: <0>Êtes-vous dirigeant majoritaire ?</0><1>Si vous êtes
       administrateur majoritaire ou si vous faites partie d'un conseil
@@ -501,7 +537,8 @@ gérer:
       pourrez effectuer votre déclaration de chiffre d'affaires, payer vos
       cotisations, et plus largement trouver toutes les informations relatives
       au statut d'auto-entrepreneur</1>
-    embaucher: <0>Découvrir les démarches d’embauche </0><1>La liste des choses à
+    embaucher:
+      <0>Découvrir les démarches d’embauche </0><1>La liste des choses à
       faire pour être sûr de ne rien oublier lors de l’embauche d’un nouveau
       salarié</1>
     sécuritéSociale: <0>Comprendre la sécurité sociale </0><1>A quoi servent les
@@ -510,8 +547,8 @@ gérer:
   titre: Gérer mon activité
 impotSociété:
   exerciceDates: Exercice du <2></2> au <6></6>
-  warning: "Ce simulateur s’adresse aux <2>TPE</2> : il prend en compte les taux
-    réduits de l’impôt sur les sociétés."
+  warning: 'Ce simulateur s’adresse aux <2>TPE</2> : il prend en compte les taux
+    réduits de l’impôt sur les sociétés.'
 inférieurs à: inférieurs à
 landing:
   aboutUs: "<0>Qui sommes-nous ?</0><1>Nous sommes une petite <2>équipe</2>
@@ -525,7 +562,8 @@ landing:
   choice:
     create: <0>Créer une entreprise</0><1>Un accompagnement au choix du statut
       juridique et la liste complète des démarches de création</1>
-    manage: <0>Gérer mon activité</0><1>Des outils personnalisés pour anticiper le
+    manage:
+      <0>Gérer mon activité</0><1>Des outils personnalisés pour anticiper le
       montant des cotisations sociales à payer et mieux gérer votre
       trésorerie.</1>
     simulators: <0>Accéder aux simulateurs</0><1>La liste exhaustive de tous les
@@ -540,7 +578,8 @@ legalNotice:
   editeur:
     title: Editeur
   hosting:
-    content: Netlify<1></1>610 22nd Street, Suite 315,<3></3>San Francisco, CA 94107
+    content:
+      Netlify<1></1>610 22nd Street, Suite 315,<3></3>San Francisco, CA 94107
       <5></5>Site web :&nbsp;<7>https://www.netlify.com</7>
     title: Prestataire d'hébergement
   publication:
@@ -554,7 +593,8 @@ mensuel: mensuel
 newsletter:
   register:
     confirmation: Votre inscription est confirmée !
-    description: Inscrivez-vous à notre newsletter pour être informé des nouveautés
+    description:
+      Inscrivez-vous à notre newsletter pour être informé des nouveautés
       et accéder aux nouvelles fonctionnalités en avant-première.
     titre: Restez au courant
 nextSteps:
@@ -566,7 +606,8 @@ page:
     title: Documentation
   simulateurs:
     accueil:
-      description: <0>Tous les simulateurs sur ce site sont :</0><1><0><0>Maintenus à
+      description:
+        <0>Tous les simulateurs sur ce site sont :</0><1><0><0>Maintenus à
         jour</0> avec les dernières évolutions législatives</0><1><0>Améliorés
         en continu</0> afin d'augmenter le nombre de dispositifs pris en
         compte</1><2><0>Intégrables facilement et gratuitement</0> sur n'importe
@@ -620,14 +661,17 @@ pages:
     29/01/2021</21>
   common:
     ressources-auto-entrepreneur:
-      FAQ: <0><0>❓ Questions fréquentes</0><1>Une liste exhaustive et maintenue à jour
+      FAQ:
+        <0><0>❓ Questions fréquentes</0><1>Une liste exhaustive et maintenue à jour
         de toutes les questions fréquentes (et moins fréquentes) que l'on est
         amené à poser en tant qu'auto-entrepreneur</1></0>
-      impôt: <0><0>📑 Comment déclarer son revenu aux impôts ?</0><1>Les informations
+      impôt:
+        <0><0>📑 Comment déclarer son revenu aux impôts ?</0><1>Les informations
         officielles de l'administration fiscale concernant les
         auto-entrepreneurs et le régime de la micro-entreprise.</1></0>
   dévelopeurs:
-    bibliothèque: "<0>Intégrez notre bibliothèque de calcul</0><1>Si vous pensez que
+    bibliothèque:
+      "<0>Intégrez notre bibliothèque de calcul</0><1>Si vous pensez que
       votre site ou service gagnerait à afficher des calculs de salaire, par
       exemple passer du salaire brut au salaire net, bonne nouvelle : tous les
       calculs de cotisations et impôts qui sont derrière mon-entreprise.fr sont
@@ -682,26 +726,31 @@ pages:
       library: <0>Libraire de calcul</0><1>L'intégralité du moteur de calcul
         socio-fiscal développé par l'Urssaf, mis à disposition librement sous
         forme de bibliothèque NPM.</1>
-      publicodes: <0>Publicodes</0><1>Nos outils sont propulsés par Publicodes, un
+      publicodes:
+        <0>Publicodes</0><1>Nos outils sont propulsés par Publicodes, un
         nouveau langage pour encoder des algorithmes “explicables”.</1>
     code:
-      description: "Voici le code à copier-coller sur votre site&nbsp;:"
+      description: 'Voici le code à copier-coller sur votre site&nbsp;:'
       titre: Code d'intégration
-    couleur: "Quelle couleur ? "
+    couleur: 'Quelle couleur ? '
     home:
       choice:
-        iframe: <0>Intégrer un simulateur</0><1>Intégrer l'un de nos simulateurs en un
+        iframe:
+          <0>Intégrer un simulateur</0><1>Intégrer l'un de nos simulateurs en un
           clic dans votre site Web, via un script clé en main.</1>
-      description: En plus du site mon-entreprise.fr, nous développons des outils
+      description:
+        En plus du site mon-entreprise.fr, nous développons des outils
         gratuits et libres à intégrer directement chez vous, dans les parcours
         habituels de vos utilisateurs.
     iframe:
-      csp-1: <0>Intégration iframe et politique de sécurité de contenu</0><1>L'erreur
+      csp-1:
+        <0>Intégration iframe et politique de sécurité de contenu</0><1>L'erreur
         ci-dessous qui s'affiche dans la console est liée à la communication
         entre la page parente et l'iframe pour le redimensionnement automatique
         au contenu affiché.</1>
-      csp-2: "Vous pouvez la corriger avec la politique suivante :"
-      intro: <0><0>Intégrez le module Web</0><1>Nos simulateurs sont intégrables de
+      csp-2: 'Vous pouvez la corriger avec la politique suivante :'
+      intro:
+        <0><0>Intégrez le module Web</0><1>Nos simulateurs sont intégrables de
         manière transparente en ajoutant une simple ligne de code à votre page
         Web.</1><2>Vous pouvez choisir le simulateur à intégrer et
         <2>personnaliser la couleur principale du module</2> pour le fondre dans
@@ -715,16 +764,18 @@ pages:
   gérer:
     aide-déclaration-indépendant:
       meta:
-        description: Calculer facilement les montants des charges sociales à reporter
+        description:
+          Calculer facilement les montants des charges sociales à reporter
           dans votre déclaration de revenu 2020.
-        title: "Déclaration de revenus indépendant : calcul du montant des cotisations"
+        title: 'Déclaration de revenus indépendant : calcul du montant des cotisations'
       shortname: Aide à la déclaration de revenu
       title: Aide à la déclaration de revenus au titre de l'année 2020
     demande-mobilité:
       meta:
-        description: Formulaire interactif à compléter pour les indépendants souhaitant
+        description:
+          Formulaire interactif à compléter pour les indépendants souhaitant
           exercer leur activité dans d'autres pays d'Europe
-        title: "Travailleur indépendant : demande de mobilité en Europe"
+        title: 'Travailleur indépendant : demande de mobilité en Europe'
       shortname: Demande de mobilité internationale
   simulateurs:
     accueil:
@@ -736,33 +787,39 @@ pages:
         apprenti: Pour l’embauche d’un apprenti ou d’un jeune en contrat de
           professionnalisation.<1></1>L’aide est versée <3>mensuellement</3> et
           automatiquement par l’Agence de services et de paiement (ASP).
-        emploi franc: Pour l’embauche d’un jeune issu d’un quartier prioritaire de la
+        emploi franc:
+          Pour l’embauche d’un jeune issu d’un quartier prioritaire de la
           ville (QPV). L’aide peut aller jusqu’à 17 000 € sur trois
           ans.<1></1>L’aide est versée tous les <3>6 mois</3> par Pôle emploi.
         handicapé: Pour l’embauche d’un travailleur en situation de
           handicap.<1></1>L’aide est versée <3>trimestriellement</3> par
           l’Agence de services et de paiement (ASP).
-        jeune: Pour l’embauche d’un jeune de moins de 26 ans en CDI ou pour un CDD d’au
+        jeune:
+          Pour l’embauche d’un jeune de moins de 26 ans en CDI ou pour un CDD d’au
           moins 3 mois.<1></1>L’aide est versée <3>trimestriellement</3> par
           l’Agence de services et de paiement (ASP).
-        senior: Pour une embauche en contrat de professionnalisation d’un demandeur
+        senior:
+          Pour une embauche en contrat de professionnalisation d’un demandeur
           d’emploi de 45 ans ou plus.<1></1>L’aide est versée par Pôle emploi
           sous la forme de deux versements de 1000 € chacun.
       card:
         action: Simuler une embauche
         montant: Montant de l’aide
-        première année: " la première année"
-      introduction: <0><0><0></0></0>Les employeurs peuvent bénéficier d'une aide
+        première année: ' la première année'
+      introduction:
+        <0><0><0></0></0>Les employeurs peuvent bénéficier d'une aide
         financière pour l'embauche de certains publics prioritaires. Découvrez
         les dispositifs existants et estimez le montant de l'aide en répondant
         aux questions.</0>
       message fin: Vous pouvez maintenant simuler le coût d’embauche précis en
         sélectionnant une aide éligible.
       meta:
-        description: Découvrez les principales aides à l’embauche et estimez leur
+        description:
+          Découvrez les principales aides à l’embauche et estimez leur
           montant en répondant à quelques questions.
         title: Aides à l’embauche
-      outro: <0>En savoir plus sur les aides</0><1>Vous pouvez retrouver une liste
+      outro:
+        <0>En savoir plus sur les aides</0><1>Vous pouvez retrouver une liste
         plus complète des aides à l'embauche existantes sur le portail
         <2>les-aides.fr</2> édité par les chambres de commerce et
         d'industrie.</1><2>Dans le cadre du plan « France Relance » le
@@ -773,29 +830,34 @@ pages:
         aides: Les aides
         aidesDisponibles: Aides disponibles
         autresAides: Les autres aides
-      warning: Ce simulateur présente une liste réduite des aides à l'embauche et
+      warning:
+        Ce simulateur présente une liste réduite des aides à l'embauche et
         n'intègre pas l'ensemble des conditions d'éligibilité.<1></1>Une
         simulation plus complète peut être réalisée en cliquant sur « Simuler
         une Embauche ».
     artiste-auteur:
       meta:
-        description: Estimez les cotisations sociales sur les droits d'auteur et sur le
+        description:
+          Estimez les cotisations sociales sur les droits d'auteur et sur le
           revenu BNC
-        title: "Artiste-auteur: calcul des cotisations Urssaf"
+        title: 'Artiste-auteur: calcul des cotisations Urssaf'
       shortname: Artiste-auteur
       title: Estimer mes cotisations d’artiste-auteur
     auto-entrepreneur:
       meta:
-        description: Calcul du revenu à partir du chiffre d'affaires, après déduction
+        description:
+          Calcul du revenu à partir du chiffre d'affaires, après déduction
           des cotisations et des impôts
-        ogDescription: "Grâce au simulateur de revenu auto-entrepreneur développé par
+        ogDescription:
+          "Grâce au simulateur de revenu auto-entrepreneur développé par
           l'Urssaf, vous pourrez estimer le montant de vos revenus en fonction
           de votre chiffre d'affaires mensuel ou annuel pour mieux gérer votre
           trésorerie. Ou dans le sens inverse : savoir quel montant facturer
           pour atteindre un certain revenu."
-        ogTitle: "Auto-entrepreneur : calculez rapidement votre revenu net à partir du
-          CA et vice-versa"
-        titre: "Auto-entrepreneurs : simulateur de revenus"
+        ogTitle:
+          'Auto-entrepreneur : calculez rapidement votre revenu net à partir du
+          CA et vice-versa'
+        titre: 'Auto-entrepreneurs : simulateur de revenus'
       seo explanation: <0>Comment calculer le revenu net d'un auto-entrepreneur
         ?</0><1>Un auto-entrepreneur doit payer des cotisations et contributions
         sociales à l'administration. Ces cotisations servent au financement de
@@ -838,17 +900,21 @@ pages:
       title: Simulateur de revenus pour chirurgien-dentiste en libéral
     chômage-partiel:
       meta:
-        description: Calcul du revenu net pour l'employé et du reste à charge pour
+        description:
+          Calcul du revenu net pour l'employé et du reste à charge pour
           l'employeur après remboursement de l'Etat, en prenant en compte toutes
           les cotisations sociales.
-        ogDescription: Accédez à une première estimation en saisissant à partir d'un
+        ogDescription:
+          Accédez à une première estimation en saisissant à partir d'un
           salaire brut. Vous pourrez ensuite personaliser votre situation (temps
           partiel, convention, etc). Prends en compte la totalité des
           cotisations, y compris celles spécifiques à l'indemnité (CSG et CRDS).
-        ogTitle: "Simulateur chômage partiel : découvrez l'impact sur le revenu net
+        ogTitle:
+          "Simulateur chômage partiel : découvrez l'impact sur le revenu net
           salarié et le coût total employeur."
         titre: "Calcul de l'indemnité chômage partiel : le simulateur Urssaf"
-      seo: <0>Comment calculer l'indemnité d'activité partielle ?</0><1>L'indemnité
+      seo:
+        <0>Comment calculer l'indemnité d'activité partielle ?</0><1>L'indemnité
         d'activité partielle de base est fixée par la loi à <2>70% du brut</2>.
         Elle est proratisée en fonction du nombre d'heures chômées. Pour un
         salarié à 2300 € brut mensuel, qui travaille à 50% de son temps usuel,
@@ -879,28 +945,34 @@ pages:
         à une contribution maladie dans certains cas. Pour en savoir plus, voir
         la page explicative sur <2>le site de l'Urssaf</2>.</11>
       shortname: Chômage partiel
-      title: "Covid-19 : Simulateur de chômage partiel"
+      title: 'Covid-19 : Simulateur de chômage partiel'
     comparaison:
       meta:
-        description: Auto-entrepreneur, indépendant ou dirigeant de SASU ? Avec ce
+        description:
+          Auto-entrepreneur, indépendant ou dirigeant de SASU ? Avec ce
           comparatif, trouvez le régime qui vous correspond le mieux
         title: "Création d'entreprise : le comparatif des régimes sociaux"
       shortname: Comparaison des statuts
-      title: "Indépendant, assimilé salarié ou auto-entrepreneur : quel régime choisir
-        ?"
+      title:
+        'Indépendant, assimilé salarié ou auto-entrepreneur : quel régime choisir
+        ?'
     ei:
       meta:
-        description: Calcul du revenu à partir du chiffre d'affaires, après déduction
+        description:
+          Calcul du revenu à partir du chiffre d'affaires, après déduction
           des cotisations et des impôts
-        ogDescription: "Grâce au simulateur de revenu pour entreprise individuelle
+        ogDescription:
+          "Grâce au simulateur de revenu pour entreprise individuelle
           développé par l'Urssaf, vous pourrez estimer le montant de vos revenus
           en fonction de votre chiffre d'affaires mensuel ou annuel pour mieux
           gérer votre trésorerie. Ou dans le sens inverse : savoir quel montant
           facturer pour atteindre un certain revenu."
-        ogTitle: "Entreprise individuelle (EI) : calculez rapidement votre revenu net à
-          partir du CA et vice-versa"
-        titre: "Entreprise individuelle (EI) : simulateur de revenus"
-      seo explanation: <0>Comment calculer le revenu net d'un dirigeant d'entreprise
+        ogTitle:
+          'Entreprise individuelle (EI) : calculez rapidement votre revenu net à
+          partir du CA et vice-versa'
+        titre: 'Entreprise individuelle (EI) : simulateur de revenus'
+      seo explanation:
+        <0>Comment calculer le revenu net d'un dirigeant d'entreprise
         individuelle (EI) ?</0><1>Un dirigeant d'entreprise individuelle doit
         payer des cotisations et contributions sociales à l'administration. Ces
         cotisations servent au financement de la sécurité sociale, et ouvrent
@@ -932,38 +1004,46 @@ pages:
       title: Simulateur pour entreprise individuelle (EI)
     eirl:
       meta:
-        description: Calcul du revenu à partir du chiffre d'affaires, après déduction
+        description:
+          Calcul du revenu à partir du chiffre d'affaires, après déduction
           des cotisations et des impôts
-        ogDescription: "Grâce au simulateur de revenu pour EIRL développé par l'Urssaf,
+        ogDescription:
+          "Grâce au simulateur de revenu pour EIRL développé par l'Urssaf,
           vous pourrez estimer le montant de vos revenus en fonction de votre
           chiffre d'affaires mensuel ou annuel pour mieux gérer votre
           trésorerie. Ou dans le sens inverse : savoir quel montant facturer
           pour atteindre un certain revenu."
-        ogTitle: "Dirigeant d'EIRL : calculez rapidement votre revenu net à partir du CA
+        ogTitle:
+          "Dirigeant d'EIRL : calculez rapidement votre revenu net à partir du CA
           et vice-versa"
-        titre: "EIRL : simulateur de revenus pour dirigeant"
+        titre: 'EIRL : simulateur de revenus pour dirigeant'
       shortname: EIRL
       title: Simulateur d'EIRL
     eurl:
       meta:
-        description: Calcul du salaire net à partir du total alloué à la rémunération et
+        description:
+          Calcul du salaire net à partir du total alloué à la rémunération et
           inversement
-        ogDescription: En tant que dirigeant assimilé-salarié, calculez immédiatement
+        ogDescription:
+          En tant que dirigeant assimilé-salarié, calculez immédiatement
           votre revenu net après impôt à partir du total alloué à votre
           rémunération.
-        ogTitle: "Rémunération du dirigeant d'EURL : un simulateur pour connaître votre
+        ogTitle:
+          "Rémunération du dirigeant d'EURL : un simulateur pour connaître votre
           salaire net"
-        titre: "EURL : simulateur de revenus pour dirigeant"
+        titre: 'EURL : simulateur de revenus pour dirigeant'
     expert-comptable:
       shortname: Expert-Comptable
-      title: Simulateur de revenus pour expert comptable et commissaire aux comptes en
+      title:
+        Simulateur de revenus pour expert comptable et commissaire aux comptes en
         libéral
     indépendant:
-      cotisations-forfaitaires: "Montant des cotisations forfaitaires : "
+      cotisations-forfaitaires: 'Montant des cotisations forfaitaires : '
       meta:
-        description: Calcul du revenu net après impôt et des cotisations à partir du
+        description:
+          Calcul du revenu net après impôt et des cotisations à partir du
           chiffre d'affaires et inversement
-        title: "Indépendant : simulateur de revenus"
+        title: 'Indépendant : simulateur de revenus'
       retraite-droits-acquis: "<0>Retraite : droits acquis sur l'année
         2021</0><1><0>Retraite de base : <2><0><0></0> trimestres
         acquis</0></2></0><1>Retraite complémentaire : <2><0>Ce simulateur ne
@@ -976,7 +1056,8 @@ pages:
       meta:
         description: Calculez votre impôt sur les sociétés
         title: Impôt sur les sociétés
-      seo: <0>Comment est calculé l’impôt sur les sociétés ?</0><1>L’impôt sur les
+      seo:
+        <0>Comment est calculé l’impôt sur les sociétés ?</0><1>L’impôt sur les
         sociétés s’applique aux bénéfices réalisés par les sociétés de capitaux
         (SA, SAS, SASU, SARL, etc.) et sur option facultative pour certaines
         autres sociétés (EIRL, EURL, SNC, etc.).</1><2>Il est calculé sur la
@@ -1001,39 +1082,46 @@ pages:
       title: Simulateur de revenus pour médecin en libéral
     pamc:
       meta:
-        description: Calcul du revenu net pour les professions libérales du régime PAMC
+        description:
+          Calcul du revenu net pour les professions libérales du régime PAMC
           (médecin, chirurgien-dentiste, sage-femme et auxiliaire médical)
         title: Simulateurs régime PAMC
       shortname: PAMC
-      title: "PAMC : simulateurs de cotisations et de revenu"
+      title: 'PAMC : simulateurs de cotisations et de revenu'
     profession-libérale:
       meta:
-        description: Calcul du revenu net pour les indépendants en libéral à l'impôt sur
+        description:
+          Calcul du revenu net pour les indépendants en libéral à l'impôt sur
           le revenu (IR, BNC)
-        title: "Professions libérale : le simulateur Urssaf"
+        title: 'Professions libérale : le simulateur Urssaf'
       shortname: Profession libérale
       title: Simulateur de revenus pour profession libérale
     sage-femme:
       shortname: Sage-femme
       title: Simulateur de revenus pour sage-femme en libéral
     salarié:
-      alt-image1: Salaire net (perçu par le salarié) = Salaire brut (inscrit dans le
+      alt-image1:
+        Salaire net (perçu par le salarié) = Salaire brut (inscrit dans le
         contrat de travail) - cotisations salariales (retraite, csg, etc)
       meta:
-        description: Calcul du salaire net, net après impôt et coût total employeur.
+        description:
+          Calcul du salaire net, net après impôt et coût total employeur.
           Beaucoup d'options disponibles (cadre, stage, apprentissage, heures
           supplémentaires, etc.)
-        ogDescription: En tant que salarié, calculez immédiatement votre revenu net
+        ogDescription:
+          En tant que salarié, calculez immédiatement votre revenu net
           après impôt à partir du brut mensuel ou annuel. En tant qu'employé,
           estimez le coût total d'une embauche à partir du brut. Ce simulateur
           est développé avec les experts de l'Urssaf, et il adapte les calculs à
           votre situation (statut cadre, stage, apprentissage, heures
           supplémentaire, titre-restaurants, mutuelle, temps partiel, convention
           collective, etc.)
-        ogTitle: "Salaire brut, net, net après impôt, coût total : le simulateur ultime
-          pour salariés et employeurs"
-        titre: "Salaire brut / net : le convertisseur Urssaf"
-      seo: "<0>Comment calculer le salaire net ?</0><1>Lors de l'entretien d'embauche
+        ogTitle:
+          'Salaire brut, net, net après impôt, coût total : le simulateur ultime
+          pour salariés et employeurs'
+        titre: 'Salaire brut / net : le convertisseur Urssaf'
+      seo:
+        "<0>Comment calculer le salaire net ?</0><1>Lors de l'entretien d'embauche
         l'employeur propose en général une rémunération exprimée en « brut ». Le
         montant annoncé inclut ainsi les cotisations salariales, qui servent à
         financer la protection sociale du salarié et qui sont retranchées du
@@ -1064,17 +1152,20 @@ pages:
       title-employeur: Simulateur de coûts d'embauche
     sasu:
       meta:
-        description: Calcul du salaire net à partir du total alloué à la rémunération et
+        description:
+          Calcul du salaire net à partir du total alloué à la rémunération et
           inversement
-        ogDescription: En tant que dirigeant assimilé-salarié, calculez immédiatement
+        ogDescription:
+          En tant que dirigeant assimilé-salarié, calculez immédiatement
           votre revenu net après impôt à partir du total alloué à votre
           rémunération.
-        ogTitle: "Rémunération du dirigeant de SASU : un simulateur pour connaître votre
-          salaire net"
-        titre: "SASU : simulateur de revenus pour dirigeant"
-      seo-explanation: "<0>Comment calculer le salaire d'un dirigeant de SASU ?
+        ogTitle:
+          'Rémunération du dirigeant de SASU : un simulateur pour connaître votre
+          salaire net'
+        titre: 'SASU : simulateur de revenus pour dirigeant'
+      seo-explanation: '<0>Comment calculer le salaire d''un dirigeant de SASU ?
         </0><1>Comme pour un salarié classique, le <2>dirigeant de sasu</2> paye
-        des cotisations sociales sur la rémunération qu'il se verse. Les
+        des cotisations sociales sur la rémunération qu''il se verse. Les
         cotisations sont calculées de la même manière que pour le salarié :
         elles sont décomposées en partie employeur et partie salarié et sont
         exprimées comme un pourcentage du salaire brut.</1><2>Le dirigeant
@@ -1082,22 +1173,24 @@ pages:
         ailleurs, il ne bénéficie pas de la <5>réduction générale de
         cotisations</5> ni des dispositifs encadrés par le code du travail comme
         les <9>heures supplémentaires</9> ou les primes.</2><3>Il peut en
-        revanche prétendre à la <2>réduction ACRE</2> en debut d'activité, sous
+        revanche prétendre à la <2>réduction ACRE</2> en debut d''activité, sous
         certaines conditions.</3><4>Vous pouvez utiliser notre simulateur pour
-        calculer la <2>rémunération nette</2> à partir d'un montant superbrut
+        calculer la <2>rémunération nette</2> à partir d''un montant superbrut
         alloué à la rémunération du dirigeant. Il vous suffit pour cela saisir
-        le montant total alloué dans la case \"total chargé\". La simulation
-        peut ensuite être affinée en répondant aux différentes questions.</4>"
+        le montant total alloué dans la case "total chargé". La simulation
+        peut ensuite être affinée en répondant aux différentes questions.</4>'
       shortname: EURL
       title: Simulateur d'EURL
   économie-collaborative:
     meta:
-      description: Airbnb, Drivy, Blablacar, Leboncoin... Découvrez comment être en
+      description:
+        Airbnb, Drivy, Blablacar, Leboncoin... Découvrez comment être en
         règle dans vos déclarations
-      title: "Déclaration des revenus des plateforme en ligne : guide intéractif"
+      title: 'Déclaration des revenus des plateforme en ligne : guide intéractif'
     shortname: Guide économie collaborative
 payslip:
-  disclaimer: Il ne prend pour l'instant pas en compte les accords et conventions
+  disclaimer:
+    Il ne prend pour l'instant pas en compte les accords et conventions
     collectives, ni la myriade d'aides aux entreprises. Trouvez votre convention
     collective <2>ici</2>, et explorez les aides
     sur&nbsp;<4>aides-entreprises.fr</4>.
@@ -1107,7 +1200,7 @@ payslip:
   repartition: Répartition du total chargé
 pour les accidents de trajet/travail et maladie pro: pour les accidents de trajet/travail et maladie pro
 previousSimulationBanner:
-  info: "Votre précédente simulation a été sauvegardée :"
+  info: 'Votre précédente simulation a été sauvegardée :'
   retrieveButton: Retrouver ma simulation
 privacyContent:
   ok: Vos préférences ont bien été enregistrées
@@ -1122,20 +1215,20 @@ privacyContent:
 responsabilité:
   bouton1: Société
   bouton2: Entreprise individuelle
-  entreprise-individuelle: "<0>Entreprise individuelle : </0>Une activité
+  entreprise-individuelle: '<0>Entreprise individuelle : </0>Une activité
     économique exercée par une seule personne physique, en son nom propre. Moins
     de formalités, mais plus de risques en cas de faillite, car votre patrimoine
     personnel peut être mis à contribution. <3>Vous ne pouvez pas accueillir de
-    nouveaux associés en entreprise individuelle.</3>"
-  intro: "Ce choix determine votre degré de responsabilité et votre capacité à
-    accueillir de nouveaux associés dans le futur "
+    nouveaux associés en entreprise individuelle.</3>'
+  intro: 'Ce choix determine votre degré de responsabilité et votre capacité à
+    accueillir de nouveaux associés dans le futur '
   société: "<0>Société : </0>Vous ne pouvez pas être tenu personnellement
     responsable des dettes ou obligations de la société. En revanche, les
     démarches de création sont un peu plus lourdes, puisqu'elles incluent
     notamment la rédaction de statuts et le dépôt d'un capital."
   titre: Entreprise individuelle ou société ?
 shareSimulation:
-  banner: "Pour partager cette simulation : <2>Générer un lien dédié</2>"
+  banner: 'Pour partager cette simulation : <2>Générer un lien dédié</2>'
   button:
     copied: Copié
     copy: Copier le lien
@@ -1164,23 +1257,28 @@ simulateurs:
   précision:
     défaut: Améliorez votre simulation en répondant aux questions
   warning:
-    année-courante: Le montant calculé correspond aux cotisations de l’année 2021
+    année-courante:
+      Le montant calculé correspond aux cotisations de l’année 2021
       (pour un revenu 2021).
     artiste-auteur:
-      "1": Cette estimation est proposée à titre indicatif. Elle est faite à partir
+      '1':
+        Cette estimation est proposée à titre indicatif. Elle est faite à partir
         des éléments réglementaires applicables et des éléments que vous avez
         saisis, mais elle ne tient pas compte de l'ensemble de votre situation.
         Le montant réel de vos cotisations peut donc être différent.
-      "2": Ce simulateur permet d'estimer le montant de vos cotisations à partir de
+      '2':
+        Ce simulateur permet d'estimer le montant de vos cotisations à partir de
         votre revenu projeté
-    auto-entrepreneur: Les auto-entrepreneurs bénéficient d’un régime très simplifié
+    auto-entrepreneur:
+      Les auto-entrepreneurs bénéficient d’un régime très simplifié
       avec un taux forfaitaire pour le calcul des cotisations et contributions
       sociales appliqué sur le chiffre d’affaires. Selon le choix de la modalité
       de paiement des impôts il est appliqué un abattement forfaitaire au titre
       des frais professionnels. Il n’est pas possible de déduire des charges
       réelles en plus. Votre revenu net est donc le chiffre d’affaires moins
       toutes les charges engagées pour l’entreprise.
-    cfe: Le simulateur n'intègre pas la cotisation foncière des entreprise (CFE) qui
+    cfe:
+      Le simulateur n'intègre pas la cotisation foncière des entreprise (CFE) qui
       est dûe dès la deuxième année d'exercice. Son montant varie fortement en
       fonction du chiffre d'affaires et de la domiciliation de l'entreprise.
       <2>Plus d'infos.</2>
@@ -1191,7 +1289,8 @@ simulateurs:
     profession-libérale: <0>Ce simulateur est à destination des professions
       libérales en BNC. Il ne prend pas en compte les sociétés d'exercice
       libéral.</0>
-    sasu: L'impôt sur les sociétés et la gestion des dividendes ne sont pas encore
+    sasu:
+      L'impôt sur les sociétés et la gestion des dividendes ne sont pas encore
       implémentés.
     titre: Avant de commencer...
     urssaf: Les calculs sont indicatifs. Ils ne se substituent pas aux décomptes
@@ -1209,7 +1308,8 @@ statut du dirigeant:
     de paiement des cotisations sociales sont également
     impactés.</0><1><0></0></1>
   page:
-    description: Ce choix est important parce qu'il détermine le régime de sécurité
+    description:
+      Ce choix est important parce qu'il détermine le régime de sécurité
       sociale et la couverture sociale de l'administrateur. Chaque option a des
       implications juridiques et conduit à un statut différent lors de la
       création de votre entreprise.
@@ -1233,7 +1333,8 @@ trouver:
 À quoi servent mes cotisations ?: À quoi servent mes cotisations ?
 économieCollaborative:
   accueil:
-    contenu: <0>Vous avez des revenus issus des <2>plateformes en ligne</2> (Airbnb,
+    contenu:
+      <0>Vous avez des revenus issus des <2>plateformes en ligne</2> (Airbnb,
       Abritel, Drivy, Blablacar, Leboncoin, etc.) ? Vous devez les déclarer dans
       la plupart des cas. Cependant, il peut être difficile de s'y retrouver
       <4>{emoji('🤔')}</4>.</0><1>Suivez ce guide pour savoir en quelques clics
@@ -1241,12 +1342,14 @@ trouver:
       communiqués automatiquement par les plateformes à l’administration fiscale
       et à l’Urssaf.</2>
     question: Quels types d'activités avez-vous exercé ?
-    réassurance: "PS : cet outil est là uniquement pour vous informer, aucune donnée
-      ne sera transmise aux administrations"
+    réassurance:
+      'PS : cet outil est là uniquement pour vous informer, aucune donnée
+      ne sera transmise aux administrations'
     titre: Comment déclarer mes revenus des plateformes en ligne ?
   activité:
     choix: Quelles sont plus précisément les activités exercées ?
-    impôt: <0>Vous devez déclarez vos revenus aux impôts</0><1>Les revenus de cette
+    impôt:
+      <0>Vous devez déclarez vos revenus aux impôts</0><1>Les revenus de cette
       activité sont imposables.</1>
     pro: <0>Il s'agit d'une activité professionnelle</0><1>Les revenus de cette
       activité sont considérés comme des <2>revenus professionnels dès le 1er
@@ -1264,10 +1367,12 @@ trouver:
       faudra seulement vérifier que son objet social est compatible avec les
       activités concernées (et le changer si besoin). Sinon, vous aurez à créer
       une nouvelle entreprise.</1><2>Créer une entreprise</2>
-    guide: <0>Consulter le guide Urssaf</0><1>Découvrez les modalités des statuts
+    guide:
+      <0>Consulter le guide Urssaf</0><1>Découvrez les modalités des statuts
       sociaux pour chaque type de locations (bien, meublé, courte durée, classé,
       etc.).</1><2>PDF</2>
-    impôts: <0>Déclarer vos revenus aux impôts</0><1>Pour ces activités, vous avez
+    impôts:
+      <0>Déclarer vos revenus aux impôts</0><1>Pour ces activités, vous avez
       uniquement besoin de déclarer vos revenus sur votre feuille d'imposition.
       Pour en savoir plus, vous pouvez consulter la <2>page dédiée sur
       impots.gouv.fr</2>.</1>
@@ -1275,7 +1380,8 @@ trouver:
       considérés comme revenus professionnels, ils sont soumis aux cotisations
       sociales. En contrepartie, ils ouvrent vos droit à des prestations
       sociales (retraite, assurance maladie, maternité, etc.).</1>
-    régimeGénéral: <0>Avec l'option régime général</0><1>Pour certaines activités,
+    régimeGénéral:
+      <0>Avec l'option régime général</0><1>Pour certaines activités,
       vous pouvez déclarer vos revenus directement sur le site de l'Urssaf.
       C'est une option intéressante si vous ne souhaitez pas créer d'entreprise
       ou modifier une entreprise existante. Vous devrez dans tous les cas
