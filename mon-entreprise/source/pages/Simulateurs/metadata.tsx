@@ -29,6 +29,8 @@ import RémunérationSASUPreview from './images/RémunérationSASUPreview.png'
 import salaireBrutNetPreviewEN from './images/SalaireBrutNetPreviewEN.png'
 import salaireBrutNetPreviewFR from './images/SalaireBrutNetPreviewFR.png'
 import ISSimulation from './ImpôtSociété'
+import dividendesConfig from './configs/dividendes.yaml' // [XXX] Rename bénéficiaire.yaml?
+import DividendesSimulation from './Dividendes'
 import IndépendantSimulation, {
 	EntrepriseIndividuelle,
 	IndépendantPLSimulation,
@@ -37,6 +39,7 @@ import PAMCHome from './PAMCHome'
 import SalariéSimulation from './Salarié'
 import SchemeComparaisonPage from './SchemeComparaison'
 import ÉconomieCollaborative from './ÉconomieCollaborative'
+import { Link } from 'react-router-dom'
 
 const simulateurs = [
 	'salarié',
@@ -62,6 +65,7 @@ const simulateurs = [
 	'pamc',
 	'is',
 	'aides-embauche',
+	'dividendes',
 ] as const
 
 export type SimulatorId = typeof simulateurs[number]
@@ -1094,7 +1098,73 @@ export function getSimulatorsData({
 					</p>
 				</Trans>
 			),
-			nextSteps: ['salarié', 'comparaison-statuts'],
+			nextSteps: ['salarié', 'dividendes', 'comparaison-statuts'],
+		},
+		dividendes: {
+			icône: '🎩',
+			tracking: 'dividendes',
+			path: sitePaths.simulateurs.dividendes,
+			iframePath: 'dividendes',
+			meta: {
+				title: t('pages.simulateurs.dividendes.meta.title', 'Dividendes'),
+				description: t(
+					'pages.simulateurs.dividendes.meta.description',
+					"Calculez le montant de l'impôt et des cotisations sur les dividendes perçus."
+				),
+				color: '#E71D66',
+			},
+			shortName: t('pages.simulateurs.dividendes.meta.title', 'Dividendes'),
+			title: t(
+				'pages.simulateurs.dividendes.title',
+				'Simulateur de versement de dividendes'
+			),
+			component: DividendesSimulation,
+			config: dividendesConfig,
+			seoExplanations: (
+				<Trans i18nKey="pages.simulateurs.dividendes.seo">
+					<h2>Les dividendes et distributions</h2>
+					<p>
+						A la fin de l'exercice d'une société, le solde exercice précédent
+						peut être affecté au versement de dividendes et distributions. Du
+						point de vue des bénéficiaires, ce sont des revenus de capitaux
+						mobiliers, soumis à des cotisations et une impositions spécifiques.
+					</p>
+					<p>
+						Ce régime s'applique aux dividendes de sociétés soumises à{' '}
+						<Link to={{ pathname: sitePaths.simulateurs.is }}>
+							l'impôt sur les sociétés
+						</Link>
+						, aux distributions (rachats de parts…) et aux boni de liquidation.
+					</p>
+					<p>
+						Ne sont pris en compte dans ce simulateur que les cas de figure du
+						bénéficiaire personne physique et des dividendes décidés par la
+						société.
+					</p>
+					<h2>
+						Comment sont calculés les prélèvements sur les dividendes versés ?
+					</h2>
+					<p>
+						Les dividendes peuvent être soumis au prélèvement forfaitaire unique
+						de 30% incluant imposition et contributions sociales (aussi appelé
+						_flat tax_). Par option, le barème de l'impôt peut être choisi. Ce
+						simulateur peut être utilisé pour comparer les deux régimes.
+					</p>
+					<p>
+						Un acompte du montant de l'impôt (12,8%) est prélevé au moment du
+						versement des dividendes, sauf si le bénéficiaire remplit{' '}
+						<a
+							target="_blank"
+							title="Aller sur le site Service Public sur les dividendes"
+							href="https://www.service-public.fr/professionnels-entreprises/vosdroits/F32963"
+						>
+							certains critères
+						</a>
+						.
+					</p>
+				</Trans>
+			),
+			nextSteps: ['salarié', 'is', 'comparaison-statuts'],
 		},
 	}
 }

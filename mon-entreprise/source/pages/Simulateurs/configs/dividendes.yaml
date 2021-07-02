@@ -1,0 +1,12 @@
+objectifs:
+  - entreprise . solde exercice précédent
+  - entreprise . mise en réserve
+  - entreprise . dividendes
+  - bénéficiaire . dividendes . net
+unité par défaut: €
+situation:
+  entreprise . imposition: "'IS'"
+# [XXX] questions à l'affiche and co?
+questions:
+  liste:
+    - dirigeant . rémunération . totale
