@@ -2,26 +2,74 @@ import { expect } from 'chai'
 import Engine from '../source/index'
 
 describe('Missing variables', function () {
-	it('should identify missing variables', function () {
+	it('should identify missing variables in applicability', function () {
 		const rawRules = {
-			ko: 'oui',
-			sum: 'oui',
-			'sum . startHere': {
+			startHere: {
 				formule: 2,
-				'non applicable si': 'sum . evt . ko',
+				'non applicable si': 'ko',
 			},
-			'sum . evt': {
+			ko: {},
+		}
+		const result = Object.keys(
+			new Engine(rawRules).evaluate('startHere').missingVariables
+		)
+
+		expect(result).to.deep.equal(['ko'])
+	})
+
+	it('should identify missing variables in formulas', function () {
+		const rawRules = {
+			startHere: {
+				formule: '2 + ko',
+			},
+			ko: {},
+		}
+		const result = Object.keys(
+			new Engine(rawRules).evaluate('startHere').missingVariables
+		)
+
+		expect(result).to.deep.equal(['ko'])
+	})
+
+	it('should identify missing variables along the namespace tree', function () {
+		const rawRules = {
+			startHere: {
+				formule: 2,
+				'non applicable si': 'evt . ko',
+			},
+			evt: {
 				formule: { 'une possibilité': ['ko'] },
 				titre: 'Truc',
 				question: '?',
 			},
-			'sum . evt . ko': {},
+			'evt . ko': {},
 		}
 		const result = Object.keys(
-			new Engine(rawRules).evaluate('sum . startHere').missingVariables
+			new Engine(rawRules).evaluate('startHere').missingVariables
 		)
 
-		expect(result).to.include('sum . evt')
+		expect(result).to.deep.equal(['evt . ko', 'evt'])
+	})
+
+	it('should not identify missing variables from static rules', function () {
+		const rawRules = {
+			startHere: {
+				formule: 2,
+				'non applicable si': 'evt . welldefined . ko',
+			},
+			evt: 'oui',
+			'evt . welldefined': {
+				formule: 1 + 1,
+				titre: 'Truc',
+				question: '?',
+			},
+			'evt . welldefined . ko': {},
+		}
+		const result = Object.keys(
+			new Engine(rawRules).evaluate('startHere').missingVariables
+		)
+
+		expect(result).to.deep.equal(['evt . welldefined . ko'])
 	})
 
 	it('should identify missing variables mentioned in expressions', function () {
