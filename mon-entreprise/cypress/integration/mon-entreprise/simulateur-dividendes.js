@@ -8,10 +8,9 @@ describe('Simulateur auto-entrepreneur', () => {
 	}
 	before(() => cy.visit('/simulateurs/dividendes'))
 
-	it('should show the PFU calculation at 12.8 / 17.2', () => {
+	it('should show by default the PFU calculation at 12.8 / 17.2', () => {
 		cy.get(inputSelector).first().type('{selectall}5000')
 		cy.get(totalSelector).contains(/[cC]otisations\s+17,2\s*%/)
-
 		cy.get(totalSelector).contains(/[Ii]mpôt\s+12,8\s*%/)
 	})
 })

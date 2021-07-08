@@ -38,8 +38,67 @@ bénéficiaire . dividendes . versés:
   valeur: entreprise . dividendes
   titre: Dividendes versés au bénéficiaire
 
-bénéficiaire . dividendes . option barème:
-  par défaut: non
+bénéficiaire . dividendes . nets d'impôt:
+  valeur: versés - dividendes . cotisations et contributions - dividendes . impôt
+  titre: Dividendes nets de cotisations et d'impôts
+  description: Ce que perçoit _in fine_ le bénéfiaire.
+
+# bénéficiaire . dividendes . pfu:
+#   non applicable si: option barème
+#   valeur: oui
+#   # valeur: cotisations et contributions + impôt
+#   # par défaut: 0 €/an
+#   titre: Prélèvement Forfaitaire Unique (ou _flat tax_)
+#   références:
+#     Fiche service-public.fr: https://www.service-public.fr/professionnels-entreprises/vosdroits/F32963
+
+bénéficiaire . dividendes . cotisations et contributions:
+  variations:
+    - si: non # [XXX]
+      alors: 0 €/an # [XXX]
+    - sinon: pfu
+
+bénéficiaire . dividendes . cotisations et contributions . assiette forfaitaire:
+  variations:
+    - si: dirigeant = 'indépendant'
+      alors:
+        le minimum de:
+          - (entreprise . valorisation + compte courant d'associé) * 10%
+          - versés
+    - sinon: versés
+  titre: Assiette des dividendes soumis aux cotisations et contributions au PFU (ou
+    _flat tax_)
+  description: |
+    Ce calcul extrait l'assiette des dividendes qui sont soumis au PFU en termes de cotisations
+    et contributions.
+  références:
+    Article L131-6 du Code de la Sécurité Sociale: https://www.legifrance.gouv.fr/codes/id/LEGISCTA000033714224/
+
+bénéficiaire . dividendes . cotisations et contributions . assiette revenus d'activité:
+  valeur: versés - assiette forfaitaire
+  par défaut: 0 €/an
+  titre: Assiette des dividendes soumis aux cotisations et contributions des revenus
+    d'activité
+  description: |
+    Cette assiette représente la partie des dividendes qui n'est pas soumise au PFU mais aux
+    cotisations et contributions des revenus d'activité au même titre qu'un salaire par exemple.
+
+bénéficiaire . dividendes . cotisations et contributions . pfu:
+  produit:
+    assiette: assiette forfaitaire
+    taux: 17.2%
+  titre: Montant des cotisations et contributions sur dividendes au titre du Prélèvement Forfaitaire Unique (ou _flat tax_)
+  références:
+    Fiche service-public.fr: https://www.service-public.fr/professionnels-entreprises/vosdroits/F32963
+
+bénéficiaire . dividendes . impôt:
+  variations:
+    - si: option barème
+      alors: impôt # [XXX] [XXX] rajouter la proratisation ou bien juste virer cette règle?
+    - sinon: pfu
+
+bénéficiaire . dividendes . impôt . option barème:
+  par défaut: oui
   titre: Option pour l'imposition au barème progressif
   description: |
     Vous pouvez opter pour l'imposition au barème progressif de l'impôt sur le revenu si vous le souhaitez.
@@ -48,12 +107,33 @@ bénéficiaire . dividendes . option barème:
 
     Il s'agit d'exercer cette option lors du dépôt de la déclaration des revenus et au plus tard avant l'expiration de la date limite de déclaration.
 
+bénéficiaire . dividendes . impôt . pfu:
+  non applicable si: option barème
+  produit:
+    assiette: versés
+    taux: 12.8%
+  titre: Montant de l'impôt sur dividendes au titre du Prélèvement Forfaitaire Unique (ou _flat tax_)
+  description: |
+    Ce montant est à verser sous forme d'acompte au moment du versement des dividendes.
+
+    L'acompte n'est pas obligatoire au cas où le revenu fiscal n-2 est inférieur à
+
+      - 50 000 € pour une personne seule,
+      - 75 000 € pour un couple soumis à l'imposition commune (mariés ou pacsés).
+
+    Dans ce cas, le bénéficiaire peut faire la demande de dispense au plus tard le 30 novembre 
+    de l'année précédant celle du paiement
+  références:
+    Fiche service-public.fr: https://www.service-public.fr/professionnels-entreprises/vosdroits/F32963
+    Article 200 A du Code Général des Impôts: https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006179579/
+    Article 117 quater du Code Général des Impôts: https://www.legifrance.gouv.fr/codes/id/LEGIARTI000036428175/#LEGIARTI000036428175
+
 # [XXX] ceci est basé sur la CSG déductible, donc faire le lien avec dirigeant . indépendant . cotisations et contributions . CSG et CRDS . déductible . taux
-bénéficiaire . dividendes . abattement fiscal: 6.8%
+bénéficiaire . dividendes . impôt . abattement fiscal: 6.8%
 
 # on considère l'abattement de 40% toujours applicable car on parle de dividendes
 # décidés en AG. Le préciser dans un encart
-bénéficiaire . dividendes . abattement fiscal 40% applicable:
+bénéficiaire . dividendes . impôt . abattement fiscal 40% applicable:
   par défaut: oui
   remplace:
     règle: abattement fiscal
@@ -68,83 +148,8 @@ bénéficiaire . dividendes . abattement fiscal 40% applicable:
 
     Cet abattement est considéré comme applicable par défaut ici.
 
-bénéficiaire . dividendes . montant imposable au barème:
-  valeur: versés
+bénéficiaire . dividendes . impôt . montant imposable au barème:
+  valeur: versés - cotisations et contributions
   abattement: abattement fiscal
   par défaut: 0 €/an
   applicable si: option barème
-
-bénéficiaire . dividendes . assiette forfaitaire:
-  variations:
-    - si: option barème
-      alors: 0
-    - si: dirigeant = 'indépendant'
-      alors:
-        le minimum de:
-          - (entreprise . valorisation + compte courant d'associé) * 10%
-          - versés
-    - sinon: versés
-  titre: Assiette des dividendes soumis aux cotisations et contributions au PFU (ou
-    _flat tax_)
-  description: |
-    Ce calcul extrait l'assiette des dividendes qui sont soumis au PFU en termes de cotisations
-    et contributions.
-  références:
-    - Article L131-6 du Code de la Sécurité Sociale: https://www.legifrance.gouv.fr/codes/id/LEGISCTA000033714224/
-
-bénéficiaire . dividendes . assiette revenus d'activité:
-  valeur: versés - assiette forfaitaire
-  par défaut: 0 €/an
-  titre: Assiette des dividendes soumis aux cotisations et contributions des revenus
-    d'activité
-  description: |
-    Cette assiette représente la partie des dividendes qui n'est pas soumise au PFU mais aux
-    cotisations et contributions des revenus d'activité au même titre qu'un salaire par exemple.
-
-bénéficiaire . dividendes . pfu:
-  non applicable si: option barème
-  valeur: cotisations et contributions + impôt
-  par défaut: 0 €/an
-  titre: Prélèvement Forfaitaire Unique (ou _flat tax_)
-  références:
-    - Article 200 A du Code Général des Impôts: https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006179579/
-    - Fiche service-public.fr: https://www.service-public.fr/professionnels-entreprises/vosdroits/F32963
-
-bénéficiaire . dividendes . pfu . impôt:
-  produit:
-    assiette: versés
-    taux: 12.8%
-  description: |
-    Ce montant est à verser sous forme d'acompte au moment du versement des dividendes.
-
-    L'acompte n'est pas obligatoire au cas où le revenu fiscal n-2 est inférieur à
-
-      - 50 000 € pour une personne seule,
-      - 75 000 € pour un couple soumis à l'imposition commune (mariés ou pacsés).
-
-    Dans ce cas, le bénéficiaire peut faire la demande de dispense au plus tard le 30 novembre 
-    de l'année précédant celle du paiement
-  références:
-    Article 117 quater du Code Général des Impôts: https://www.legifrance.gouv.fr/codes/id/LEGIARTI000036428175/#LEGIARTI000036428175
-
-bénéficiaire . dividendes . pfu . cotisations et contributions:
-  produit:
-    assiette: assiette forfaitaire
-    taux: 17.2%
-
-bénéficiaire . dividendes . impôt:
-  variations:
-    - si: option barème
-      alors: 0 €/an # [XXX]
-    - sinon: pfu . impôt
-
-bénéficiaire . dividendes . cotisations et contributions:
-  variations:
-    - si: option barème
-      alors: 0 €/an # [XXX]
-    - sinon: pfu . cotisations et contributions
-
-bénéficiaire . dividendes . net:
-  valeur: versés - dividendes . cotisations et contributions - dividendes . impôt
-  titre: Dividendes nets de cotisations et d'impôts
-  description: Ce que perçoit _in fine_ le bénéfiaire.

@@ -1,4 +1,4 @@
-impôt:
+impôt: # [XXX] Demander c'est quoi la diff avec foyer fiscal truc muche
   icônes: 🏛️
   description: Cet ensemble de formules est un modèle simplifié de l'impôt sur le revenu.
   titre: impôt sur le revenu
@@ -7,7 +7,6 @@ impôt:
         assiette: revenu imposable
         taux: taux d'imposition
     - dirigeant . auto-entrepreneur . impôt . versement libératoire . montant
-    - bénéficiaire . dividendes . pfu
   arrondi: oui
   unité: €/an
 
@@ -68,25 +67,20 @@ impôt . méthode de calcul . prélèvement à la source:
       - taux neutre
       - taux personnalisé
 
+# [XXX] Demander c'est quoi la diff avec le foyer fiscal . revenu imposable
+# [XXX] Aussi, n'est-ce pas embêtant d'avoir plusieurs méthodes de calcul alors que pour les dividendes il est explicitement dit qu'ils sont soumis au barème progressif?
 impôt . revenu imposable:
   description: |
     C'est le revenu à prendre en compte pour calculer l'impôt avec un taux moyen d'imposition (neutre ou personnalisé).
-  variations: 
+  variations:
     - si: dirigeant
-      alors: dirigeant . rémunération . imposable
-    - sinon: 
+      alors:
         somme:
-          - contrat salarié . rémunération . net imposable
-          - bénéficiaire . dividendes . montant imposable au barème
+          - dirigeant . rémunération . imposable
+          - bénéficiaire . dividendes . impôt . montant imposable au barème
+    - sinon:
+        valeur: contrat salarié . rémunération . net imposable
         abattement: abattement contrat court
-
-impôt . revenu imposable . acompte dividendes:
-  description: |
-    Acompte à verser au moment du versement des dividendes.
-
-    Cet acompte n'est pas obligatoire au cas où le revenu fiscal n-2 est suffisamment bas. 
-    Dans ce cas, le bénéficiaire peut faire la demande de dispense au plus tard le 30 novembre 
-    de l'année précédant celle du paiement
 
 impôt . revenu imposable . abattement contrat court:
   description: Lorsque la durée d'un contrat de travail est inférieure à 2 mois, il est possible d'appliquer un abattement pour diminuer le montant du prélèvement à la source.
@@ -350,21 +344,21 @@ impôt . foyer fiscal . nombre de parts . majoration personne veuve avec enfant:
 
 impôt . foyer fiscal . taux effectif:
   unité: '%'
-  variations: 
+  variations:
     - si: impôt à payer = 0
-      alors: 0% 
-    - sinon: impôt à payer / revenu imposable 
-
+      alors: 0%
+    - sinon: impôt à payer / revenu imposable
 
 impôt . foyer fiscal . revenu imposable:
   formule:
     somme:
       - revenu d'activité abattu
-      - applicable si: 
-          toutes ces conditions: 
+      - applicable si:
+          toutes ces conditions:
             - dirigeant . rémunération . imposable
             - entreprise . imposition . IR
         valeur: dirigeant . rémunération . imposable
+      - bénéficiaire . dividendes . impôt . montant imposable au barème
       - autres revenus imposables
 
 impôt . foyer fiscal . revenu imposable . revenu d'activité abattu:

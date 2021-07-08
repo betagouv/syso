@@ -29,22 +29,22 @@ const DividendesSimulationGoals = () => (
 				alwaysShow
 				dottedName="bénéficiaire . dividendes . versés"
 			/>
-			{/* [XXX] */}
-			{/* <Condition expression="bénéficiaire . dividendes . option barème">
+
+			<Condition expression="bénéficiaire . dividendes . impôt . option barème">
 				<SimulationGoal
 					small
 					appear={false}
-					dottedName="contrat salarié . rémunération . net imposable"
+					dottedName="dirigeant . rémunération . totale"
 				/>
 			</Condition>
-			<Condition expression="bénéficiaire . dividendes . option barème">
-				<SimulationGoal dottedName="dirigeant . rémunération . totale" />
-			</Condition> */}
-			<SimulationGoal
-				appear={false}
-				alwaysShow
-				dottedName="bénéficiaire . dividendes . net"
-			/>
+			<Condition expression="oui">
+				{/*  [XXX] pour barème n'afficher qu'après avoir eu le montant des revenus de dirigeant */}
+				<SimulationGoal
+					appear={false}
+					alwaysShow
+					dottedName="bénéficiaire . dividendes . nets d'impôt"
+				/>
+			</Condition>
 		</Condition>
 	</SimulationGoals>
 )
@@ -76,7 +76,7 @@ const DividendesExplanation = () => {
 					precision={0.1}
 					data={[
 						{
-							dottedName: 'bénéficiaire . dividendes . net',
+							dottedName: "bénéficiaire . dividendes . nets d'impôt",
 							title: t('Dividendes nets'),
 							color: palettes[0][0],
 						},

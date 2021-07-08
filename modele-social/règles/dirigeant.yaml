@@ -480,10 +480,10 @@ dirigeant . indépendant . revenu professionnel:
   résoudre la référence circulaire: oui
   variations:
     - si: entreprise . imposition = 'IS'
-      alors: 
-        somme: 
+      alors:
+        somme:
           - rémunération . nette
-          - bénéficiaire . dividendes . assiette revenus d'activité
+          - bénéficiaire . dividendes . cotisations et contributions . assiette revenus d'activité # [XXX] [XXX] soustraire la quote-part de ça du montant imposable
           - cotisations et contributions . non déductibles
     - sinon: entreprise . résultat fiscal
 
