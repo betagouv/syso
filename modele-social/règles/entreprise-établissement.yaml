@@ -552,8 +552,7 @@ entreprise . charges . dirigeant:
 entreprise . dividendes:
   par défaut: 0 €/an
   unité: €/an
-  †itre: dividendes versés
-  question: Quels sont les dividendes que vous souhaitez vous verser ?
+  titre: Dividendes versés par l'entreprise à ses bénéficiaires
 
 entreprise . valorisation:
   description: |

@@ -34,7 +34,9 @@ bénéficiaire . dividendes:
   non applicable si: entreprise . imposition = 'IR'
 
 # on ne prend en compte pour l'instant que le cas entreprise unipersonnelle
-bénéficiaire . dividendes . versés: entreprise . dividendes
+bénéficiaire . dividendes . versés:
+  valeur: entreprise . dividendes
+  titre: Dividendes versés au bénéficiaire
 
 bénéficiaire . dividendes . option barème:
   par défaut: non

@@ -27,7 +27,7 @@ const DividendesSimulationGoals = () => (
 			<SimulationGoal
 				appear={false}
 				alwaysShow
-				dottedName="entreprise . dividendes"
+				dottedName="bénéficiaire . dividendes . versés"
 			/>
 			{/* [XXX] */}
 			{/* <Condition expression="bénéficiaire . dividendes . option barème">
@@ -40,6 +40,11 @@ const DividendesSimulationGoals = () => (
 			<Condition expression="bénéficiaire . dividendes . option barème">
 				<SimulationGoal dottedName="dirigeant . rémunération . totale" />
 			</Condition> */}
+			<SimulationGoal
+				appear={false}
+				alwaysShow
+				dottedName="bénéficiaire . dividendes . net"
+			/>
 		</Condition>
 	</SimulationGoals>
 )

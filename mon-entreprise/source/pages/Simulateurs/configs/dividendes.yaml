@@ -1,5 +1,5 @@
 objectifs:
-  - entreprise . dividendes
+  - bénéficiaire . dividendes . versés
   - bénéficiaire . dividendes . net
 unité par défaut: €
 situation:
