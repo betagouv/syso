@@ -56,7 +56,9 @@ dirigeant . rémunération . imposable:
       alors: indépendant . revenu professionnel
     - si: auto-entrepreneur
       alors: auto-entrepreneur . impôt . revenu imposable
-    
+
+
+# [XXX] Demander: pourquoi faire ce calcul au lieu de se baser sur les résultats des règles `impôt .*`?
 dirigeant . rémunération . impôt:
   titre: impôt sur le revenu
   somme:
@@ -483,7 +485,6 @@ dirigeant . indépendant . revenu professionnel:
       alors:
         somme:
           - rémunération . nette
-          - bénéficiaire . dividendes . cotisations et contributions . assiette revenus d'activité # [XXX] [XXX] soustraire la quote-part de ça du montant imposable
           - cotisations et contributions . non déductibles
     - sinon: entreprise . résultat fiscal
 

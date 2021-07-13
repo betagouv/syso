@@ -244,7 +244,7 @@ entreprise . imposition:
       possibilités:
         - IR
         - IS
-  par défaut: "'IR'"
+  par défaut: "'IR'"  # [XXX] les possibilités sont des références et ceci est une constante?
 
 entreprise . imposition . IR:
   valeur: imposition = 'IR'
@@ -549,16 +549,15 @@ entreprise . charges . dirigeant:
         valeur: dirigeant . indépendant . cotisations et contributions
         abattement: dirigeant . indépendant . cotisations et contributions . non déductibles
 
-entreprise . dividendes:
-  par défaut: 0 €/an
-  unité: €/an
-  titre: Dividendes versés par l'entreprise à ses bénéficiaires
+# on ne prend en compte pour l'instant que le cas entreprise unipersonnelle
+entreprise . dividendes: bénéficiaire . dividendes . versés
 
-entreprise . valorisation:
+entreprise . capital social:
   description: |
-    Valeur marchande des titres de la société (actions ou parts).
-
-    Cette valeur doit inclure la valeur du capital social ainsi que des primes d'émission.
+    Cette valeur doit inclure la valeur des ca primes d'émission.
+  titre: Capital social
+  question: Quele est le capital social de la société ?
+  unité: €
 
 entreprise . ACRE:
   description: >-
