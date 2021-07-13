@@ -1,18 +1,17 @@
 objectifs:
   - bénéficiaire . dividendes . versés
   - bénéficiaire . dividendes . nets d'impôt
-  # - dirigeant . rémunération . totale
 unité par défaut: €
 situation:
+  bénéficiaire . dividendes: oui
   entreprise . imposition: "'IS'"
-  impôt . méthode de calcul: "'barème standard'"
-  impôt . option RCM: "'PFU'"
+  impôt . méthode de calcul: "'PFU'"
   contrat salarié . rémunération . net imposable: 0 €/an  # [XXX] [XXX] remove
   indépendant . revenu professionnel: 0 €/an # [XXX] [XXX] remove
   impôt . foyer fiscal . revenu imposable . revenu d'activité abattu: 0 €/an
 questions:
-  à l'affiche:
-    Régime social du dirigeant: dirigeant
+  # à l'affiche:
+  #   Régime social du dirigeant: dirigeant
   liste noire:
-    - impôt . option RCM
-      # - dirigeant . rémunération . totale
+    - impôt . méthode de calcul
+    - impôt . foyer fiscal . impôt sur le revenu . impôt brut . sans avantage quotient familial . sans part  # [XXX] seems like a recalcul missingVariables bug

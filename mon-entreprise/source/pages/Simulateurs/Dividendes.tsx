@@ -45,10 +45,10 @@ export default function DividendesSimulation() {
 function OptionBarèmeSwitch() {
 	const dispatch = useDispatch()
 	const engine = useEngine()
-	const dottedName = 'impôt . option RCM' as DottedName
+	const dottedName = 'impôt . méthode de calcul' as DottedName
 	const currentOptionPFU = engine.evaluate(dottedName + ' . PFU').nodeValue
 	const currentOptionBarème = engine.evaluate(
-		dottedName + ' . barème'
+		dottedName + ' . barème standard'
 	).nodeValue
 
 	return (
@@ -72,7 +72,9 @@ function OptionBarèmeSwitch() {
 					name={dottedName}
 					type="radio"
 					value="oui"
-					onChange={() => dispatch(updateSituation(dottedName, "'barème'"))}
+					onChange={() =>
+						dispatch(updateSituation(dottedName, "'barème standard'"))
+					}
 					checked={!!currentOptionBarème}
 				/>
 				<span>
@@ -92,12 +94,12 @@ const DividendesSimulationGoals = () => (
 				dottedName="bénéficiaire . dividendes . versés"
 			/>
 
-			<Condition expression="impôt . option RCM . barème">
+			<Condition expression="impôt . méthode de calcul . barème standard">
 				{/* [XXX] Default at 0 €/an if not yet defined */}
 				<SimulationGoal
 					small
 					appear={false}
-					dottedName="dirigeant . rémunération . totale"
+					dottedName="impôt . foyer fiscal . revenu imposable . autres revenus imposables"
 				/>
 			</Condition>
 			<Condition expression="oui">

@@ -31,7 +31,7 @@ bénéficiaire . compte courant d'associé:
     Circulaire RSI C2014-001: https://www.secu-independants.fr/uploads/tx_rsirss/C2014-001.pdf
 
 bénéficiaire . dividendes:
-  valeur: oui
+  par défaut: non
   non applicable si: entreprise . imposition = 'IR'
 
 bénéficiaire . dividendes . versés:
@@ -49,95 +49,134 @@ bénéficiaire . dividendes . nets d'impôt:
   valeur: versés - dividendes . cotisations et contributions - impôt . dividendes
   titre: Dividendes nets de cotisations et d'impôts
 
-  ## bénéficiaire . dividendes . montant impôt:
-  ##   variations:
-  ##     - si: impôt . option RCM . barème
-  ##       alors:
-  ##         impôt * impôt . dividendes . net imposable / impôt . revenu imposable
-  ##         # prorata:
-  ##         #   part: net imposable
-  ##         #   total: impôt . revenu imposable
-  ##         #   résultat: impôt
-  ##     - sinon: impôt . dividendes . PFU
-  ##   titre: Impôt sur dividendes
-
 bénéficiaire . dividendes . cotisations et contributions:
-  somme:
-    - dividendes . cotisations et contributions . part PFU
-    - dividendes . cotisations et contributions . part régime indépendant
+  produit:
+    assiette: versés
+    composantes:
+      - attributs:
+          nom: CSG non déductible
+        taux:
+          variations:
+            - si: impôt . méthode de calcul . PFU
+              alors: 9.2%
+            - sinon: 2.4%
+      - attributs:
+          nom: CSG déductible
+        taux:
+          variations:
+            - si: impôt . méthode de calcul . PFU
+              alors: 0%
+            - sinon: 6.8%
+      - attributs:
+          nom: CRDS
+        taux: 0.5%
+      - attributs:
+          nom: prélèvement de solidarité
+        taux: 7.5%
   titre: Cotisations et contributions sur dividendes
 
-# [XXX] Essayer composantes
-bénéficiaire . dividendes . cotisations et contributions . assiette forfaitaire:
-  variations:
-    - si: dirigeant = 'indépendant'
-      alors:
-        valeur: versés
-        plafond: assiette forfaitaire max indépendant
-    - sinon: versés
-  unité: €/an
-  titre: Assiette des dividendes soumis aux cotisations et contributions au PFU (ou "flat tax")
-  description: |
-    Ce calcul extrait l'assiette des dividendes qui sont soumis au PFU en termes de cotisations
-    et contributions.
-  références:
-    Article L131-6 du Code de la Sécurité Sociale: https://www.legifrance.gouv.fr/codes/id/LEGISCTA000033714224/
-    Fiche URSSAF: https://www.urssaf.fr/portail/home/independant/mes-cotisations/les-etapes-de-calcul/la-declaration-sociale-et-fiscal/les-revenus-pris-en-compte-pour.html
+    # bénéficiaire . dividendes . cotisations et contributions:
+    #   somme:
+    #     - dividendes . cotisations et contributions . part PFU
+    #     - dividendes . cotisations et contributions . part régime indépendant
+    #   titre: Cotisations et contributions sur dividendes
+    # 
+    # # [XXX] Essayer composantes
+    # bénéficiaire . dividendes . cotisations et contributions . assiette forfaitaire:
+    #   variations:
+    #     - si: dirigeant = 'indépendant'
+    #       alors:
+    #         valeur: versés
+    #         plafond: assiette forfaitaire max indépendant
+    #     - sinon: versés
+    #   unité: €/an
+    #   titre: Assiette des dividendes soumis aux cotisations et contributions au PFU (ou "flat tax")
+    #   description: |
+    #     Ce calcul extrait l'assiette des dividendes qui sont soumis au PFU en termes de cotisations
+    #     et contributions.
+    #   références:
+    #     Article L131-6 du Code de la Sécurité Sociale: https://www.legifrance.gouv.fr/codes/id/LEGISCTA000033714224/
+    #     Fiche URSSAF: https://www.urssaf.fr/portail/home/independant/mes-cotisations/les-etapes-de-calcul/la-declaration-sociale-et-fiscal/les-revenus-pris-en-compte-pour.html
+    # 
+    # bénéficiaire . dividendes . cotisations et contributions . assiette forfaitaire max indépendant:
+    #   produit:
+    #     assiette:
+    #       somme:
+    #         - entreprise . capital social
+    #         - compte courant d'associé
+    #     taux: 10%
+    #   unité: €/an
+    # 
+    # bénéficiaire . dividendes . cotisations et contributions . assiette régime indépendant:
+    #   valeur: versés - assiette forfaitaire
+    #   par défaut: 0 €/an
+    #   unité: €/an
+    #   titre: Assiette des dividendes soumis aux cotisations et contributions du régime indépendant
+    #   description: |
+    #     Cette assiette représente la partie des dividendes qui n'est pas soumise au PFU mais aux
+    #     cotisations et contributions du régime du travailleur indépendant.
+    #   références:
+    #     Fiche URSSAF: https://www.urssaf.fr/portail/home/independant/mes-cotisations/les-etapes-de-calcul/la-declaration-sociale-et-fiscal/les-revenus-pris-en-compte-pour.html
+    # 
+    # bénéficiaire . dividendes . cotisations et contributions . part PFU:
+    #   produit:
+    #     assiette: assiette forfaitaire
+    #     taux: 17.2%
+    #   titre: Montant des cotisations et contributions sur dividendes au titre du Prélèvement Forfaitaire Unique (ou "flat tax")
+    #   références:
+    #     Fiche service-public.fr: https://www.service-public.fr/professionnels-entreprises/vosdroits/F32963
+    # 
+    # bénéficiaire . dividendes . cotisations et contributions . part régime indépendant:
+    #   variations:
+    #     - si: assiette régime indépendant > 0
+    #       alors:
+    #         recalcul:
+    #           règle: dirigeant . rémunération . cotisations
+    #           avec:
+    #             dirigeant . rémunération . totale: bénéficiaire . dividendes . cotisations et contributions . assiette régime indépendant
+    #     - sinon: 0 €/an
+    #   unité: €/an
+    #   titre: Cotisations et contributions sur la part des dividendes soumis au régime normal du travailleur indépendant
+    #   références:
+    #     Fiche URSSAF: https://www.urssaf.fr/portail/home/independant/mes-cotisations/les-etapes-de-calcul/la-declaration-sociale-et-fiscal/les-revenus-pris-en-compte-pour.html
 
-bénéficiaire . dividendes . cotisations et contributions . assiette forfaitaire max indépendant:
-  produit:
-    assiette:
-      somme:
-        - entreprise . capital social
-        - compte courant d'associé
-    taux: 10%
-  unité: €/an
-
-bénéficiaire . dividendes . cotisations et contributions . assiette régime indépendant:
-  valeur: versés - assiette forfaitaire
-  par défaut: 0 €/an
-  unité: €/an
-  titre: Assiette des dividendes soumis aux cotisations et contributions du régime indépendant
-  description: |
-    Cette assiette représente la partie des dividendes qui n'est pas soumise au PFU mais aux
-    cotisations et contributions du régime du travailleur indépendant.
-  références:
-    Fiche URSSAF: https://www.urssaf.fr/portail/home/independant/mes-cotisations/les-etapes-de-calcul/la-declaration-sociale-et-fiscal/les-revenus-pris-en-compte-pour.html
-
-bénéficiaire . dividendes . cotisations et contributions . part PFU:
-  produit:
-    assiette: assiette forfaitaire
-    taux: 17.2%
-  titre: Montant des cotisations et contributions sur dividendes au titre du Prélèvement Forfaitaire Unique (ou "flat tax")
-  références:
-    Fiche service-public.fr: https://www.service-public.fr/professionnels-entreprises/vosdroits/F32963
-
-bénéficiaire . dividendes . cotisations et contributions . part régime indépendant:
-  variations:
-    - si: assiette régime indépendant > 0
-      alors:
-        recalcul:
-          règle: dirigeant . rémunération . cotisations
-          avec:
-            dirigeant . rémunération . totale: bénéficiaire . dividendes . cotisations et contributions . assiette régime indépendant
-    - sinon: 0 €/an
-  unité: €/an
-  titre: Cotisations et contributions sur la part des dividendes soumis au régime normal du travailleur indépendant
-  références:
-    Fiche URSSAF: https://www.urssaf.fr/portail/home/independant/mes-cotisations/les-etapes-de-calcul/la-declaration-sociale-et-fiscal/les-revenus-pris-en-compte-pour.html
+    # bénéficiaire . dividendes . imposables:
+    #   recalcul:
+    #     règle: dirigeant . rémunération . imposable
+    #     avec:
+    #       dirigeant . rémunération . totale: bénéficiaire . dividendes . versés
+    #       dirigeant: "'indépendant'"
+    #   abattement: 40%
+    #   titre: Net imposable des dividendes auxquels s'applique le barème de l'impôt sur le revenu
+    #   description: |
+    #     Un abattement de 40% s'applique dans le cas où
+    # 
+    #     - la société distributrice des dividendes relève de l'IS
+    #     - la société distributrice est française ou a son siège en UE ou dans un état ayant conclu des accords en ce sens avec la France
+    #     - les dividendes sont décidés en assemblée générale.
 
 bénéficiaire . dividendes . imposables:
-  recalcul:
-    règle: dirigeant . rémunération . imposable
-    avec:
-      dirigeant . rémunération . totale: bénéficiaire . dividendes . cotisations et contributions . assiette régime indépendant
-  abattement: 40%
-  titre: Net imposable de la part des dividendes auxquels s'applique le barème de l'impôt sur le revenu
+  # recalcul:
+  #   règle: dirigeant . rémunération . imposable
+  #   avec:
+  #     dirigeant . rémunération . totale: versés
+  # somme:
+  #   # - nette
+  #   - dividendes . versés
+  #   # - (- cotisations et contributions)
+  #   - (- CSG et CRDS)  # Pas d'autre type de contributions ici, comparé aux règles indépendant
+  #   # - cotisations et contributions nonded
+  #   - CSG et CRDS non déductible  # pas de cotisations facultatives ici, comparé aux règles indépendant
+  somme:
+    - valeur: versés
+      abattement: 40%
+    - (- cotisations et contributions . CSG déductible)
+  titre: Net imposable des dividendes auxquels s'applique le barème de l'impôt sur le revenu
   description: |
     Un abattement de 40% s'applique dans le cas où
-
+  
     - la société distributrice des dividendes relève de l'IS
     - la société distributrice est française ou a son siège en UE ou dans un état ayant conclu des accords en ce sens avec la France
     - les dividendes sont décidés en assemblée générale.
-
-    Cet abattement est considéré comme applicable par défaut ici.
+  références:
+    Fiche service-public.fr: https://www.service-public.fr/particuliers/vosdroits/F2329
