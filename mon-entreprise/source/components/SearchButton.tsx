@@ -1,14 +1,33 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import emoji from 'react-easy-emoji'
 import { Trans } from 'react-i18next'
+import { useLocation } from 'react-router'
+import styled from 'styled-components'
 import Overlay from './Overlay'
-import SearchBar from './SearchBar'
+import SearchRulesAndSimulators from './search/SearchRulesAndSimulators'
+import { breakpoints } from './ui/breakpoints'
 
-type SearchButtonProps = {
-	invisibleButton?: boolean
-}
+const SearchTriggerButton = styled.button`
+	display: flex;
+	margin: 5px auto auto auto;
+	border-radius: 3em;
+	border: 1px solid;
+	border-color: rgb(41, 117, 209);
+	border-color: var(--color);
+	padding: 0.6rem 1.4rem;
+	font-size: 1.1em;
+	align-items: center;
+	justify-items: center;
+	transform: scale(0.9);
 
-export default function SearchButton({ invisibleButton }: SearchButtonProps) {
+	@media (min-width: ${breakpoints.tablet}) {
+		margin-top: -3em;
+	}
+`
+
+export default function SearchButton() {
+	const { pathname } = useLocation()
+	const pathnameRef = useRef(pathname)
 	const [visible, setVisible] = useState(false)
 
 	useEffect(() => {
@@ -19,7 +38,9 @@ export default function SearchButton({ invisibleButton }: SearchButtonProps) {
 			e.preventDefault()
 			return false
 		}
+
 		window.addEventListener('keydown', handleKeyDown)
+
 		return () => {
 			window.removeEventListener('keydown', handleKeyDown)
 		}
@@ -27,19 +48,30 @@ export default function SearchButton({ invisibleButton }: SearchButtonProps) {
 
 	const close = () => setVisible(false)
 
-	return visible ? (
-		<Overlay onClose={close}>
-			<h1>
-				<Trans>Chercher dans la documentation</Trans>
-			</h1>
-			<SearchBar />
-		</Overlay>
-	) : invisibleButton ? null : (
-		<button
-			className="ui__ simple small button"
-			onClick={() => setVisible(true)}
-		>
-			{emoji('🔍')} <Trans>Rechercher</Trans>
-		</button>
+	useEffect(() => {
+		if (pathname !== pathnameRef.current) {
+			pathnameRef.current = pathname
+			close()
+		}
+	}, [pathname])
+
+	return (
+		<>
+			{visible && (
+				<Overlay onClose={close}>
+					<h1>
+						<Trans>Que recherchez vous?</Trans>
+					</h1>
+					<SearchRulesAndSimulators />
+				</Overlay>
+			)}
+
+			<SearchTriggerButton onClick={() => setVisible(true)}>
+				{emoji('🔍')}{' '}
+				<div style={{ margin: 'auto', marginLeft: '4px' }}>
+					<Trans>Rechercher</Trans>
+				</div>
+			</SearchTriggerButton>
+		</>
 	)
 }
