@@ -2,22 +2,84 @@ import { useContext } from 'react'
 import { Condition } from 'Components/EngineValue'
 import { SimulationGoals, SimulationGoal } from 'Components/SimulationGoals'
 import { ThemeColorsContext } from 'Components/utils/colors'
-import SimulateurWarning from 'Components/SimulateurWarning'
 import Notifications from 'Components/Notifications'
 import Simulation from 'Components/Simulation'
 import { Trans, useTranslation } from 'react-i18next'
 import StackedBarChart from 'Components/StackedBarChart'
+import { useDispatch } from 'react-redux'
+import { useEngine } from 'Components/utils/EngineContext'
+import { updateSituation } from 'Actions/actions'
+import { DottedName } from 'modele-social'
+import { HiddenOptionContext } from 'Components/conversation/Question'
 
 export default function DividendesSimulation() {
 	return (
+		// [XXX] Add warnings? cf. SimulateurWarning
 		<>
-			{/* [XXX] Seems useless */}
-			<SimulateurWarning simulateur="dividendes" />
 			<Notifications />
-			<Simulation explanations={<DividendesExplanation />}>
-				<DividendesSimulationGoals />
-			</Simulation>
+			<HiddenOptionContext.Provider value={['dirigeant . auto-entrepreneur']}>
+				<Simulation explanations={<DividendesExplanation />}>
+					<div
+						css={`
+							display: flex;
+							flex-wrap: wrap-reverse;
+							> * {
+								margin-top: 0.6rem;
+							}
+							justify-content: center;
+
+							@media (min-width: 590px) {
+								justify-content: space-between;
+							}
+						`}
+					>
+						<OptionBarèmeSwitch />
+					</div>
+					<DividendesSimulationGoals />
+				</Simulation>
+			</HiddenOptionContext.Provider>
 		</>
+	)
+}
+
+function OptionBarèmeSwitch() {
+	const dispatch = useDispatch()
+	const engine = useEngine()
+	const dottedName = 'impôt . option RCM' as DottedName
+	const currentOptionPFU = engine.evaluate(dottedName + ' . PFU').nodeValue
+	const currentOptionBarème = engine.evaluate(
+		dottedName + ' . barème'
+	).nodeValue
+
+	return (
+		<span className="base ui__ small radio toggle">
+			<label>
+				<input
+					name={dottedName}
+					type="radio"
+					value="non"
+					onChange={() => dispatch(updateSituation(dottedName, "'PFU'"))}
+					checked={!!currentOptionPFU}
+				/>
+				<span>
+					<Trans>
+						PFU (<i>"flat tax"</i>)
+					</Trans>
+				</span>
+			</label>
+			<label>
+				<input
+					name={dottedName}
+					type="radio"
+					value="oui"
+					onChange={() => dispatch(updateSituation(dottedName, "'barème'"))}
+					checked={!!currentOptionBarème}
+				/>
+				<span>
+					<Trans>Impôt au barème</Trans>
+				</span>
+			</label>
+		</span>
 	)
 }
 
@@ -30,7 +92,8 @@ const DividendesSimulationGoals = () => (
 				dottedName="bénéficiaire . dividendes . versés"
 			/>
 
-			<Condition expression="bénéficiaire . dividendes . impôt . option barème">
+			<Condition expression="impôt . option RCM . barème">
+				{/* [XXX] Default at 0 €/an if not yet defined */}
 				<SimulationGoal
 					small
 					appear={false}
@@ -81,7 +144,7 @@ const DividendesExplanation = () => {
 							color: palettes[0][0],
 						},
 						{
-							dottedName: 'bénéficiaire . dividendes . impôt',
+							dottedName: 'impôt . dividendes',
 							title: t('Impôt'),
 							color: palettes[1][0],
 						},

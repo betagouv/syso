@@ -81,6 +81,7 @@ Gérant minoritaire: Managing director
 Gérant minoritaire ou égalitaire: Minority or equal manager
 Habituellement: Usually
 Imprimer: Print
+Impôt au barème: Tax on the scale
 Impôts: Taxes
 "Indemnité chômage partiel prise en charge par l'état :": "State-paid short-time working allowance :"
 Indépendant: Indépendant
@@ -109,6 +110,7 @@ Non: No
 Nous n'avons rien trouvé: We didn't find any matching registered company.
 Oui: Yes
 Outils pour les développeurs: Tools for developers
+PFU (<1>"flat tax"</1>): Flat tax
 Pages associées: Related pages
 Par statut: By status
 Part du salaire net maintenue: Share of net salary maintained
@@ -1245,6 +1247,27 @@ pages:
         this, simply enter the announced compensation in the total loaded box.
         The simulation can then be refined by answering the various
         questions.</4>"
+    dividendes:
+      meta:
+        description: Calculate the amount of tax and contributions on dividends received.
+        title: Dividends
+      seo: <0>Dividends and distributions</0><1>At the end of a company's financial
+        year, the balance of the previous financial year can be used to pay
+        dividends and distributions. From the point of view of the
+        beneficiaries, these are income from movable capital, subject to
+        specific contributions and taxation.</1><2>This regime applies to
+        dividends from companies subject to <2>corporate income tax</2>, to
+        distributions (share buybacks, etc.) and to liquidation
+        surpluses.</2><3>This simulator only takes into account the case of the
+        individual beneficiary and the dividends decided by the
+        company.</3><4>How are deductions calculated on dividends
+        paid?</4><5>Dividends may be subject to a single flat-rate levy of 30%
+        including tax and social security contributions (also known as<1> flat
+        tax</1>). Optionally, the tax scale can be chosen. This simulator can be
+        used to compare the two systems.</5><6>An advance payment of the amount
+        of tax (12.8%) is deducted at the time of payment of the dividends,
+        unless the beneficiary meets <2>certain criteria</2>.</6>
+      title: Dividend Payment Simulator
     ei:
       meta:
         description: Calculation of income from turnover, after deduction of

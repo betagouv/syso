@@ -29,6 +29,7 @@ Gestion des données personnelles: Gestion des données personnelles
 Gérant majoritaire: Gérant majoritaire
 Gérant minoritaire: Gérant minoritaire
 Gérant minoritaire ou égalitaire: Gérant minoritaire ou égalitaire
+Impôt au barème: Impôt au barème
 Indépendant: Indépendant
 Indépendants et dirigeants: Indépendants et dirigeants
 International: International
@@ -43,6 +44,7 @@ Montant de l'impôt sur les sociétés: Montant de l'impôt sur les sociétés
 Non: Non
 Oui: Oui
 Outils pour les développeurs: Outils pour les développeurs
+PFU (<1>"flat tax"</1>): PFU (<1>"flat tax"</1>)
 Part employeur: Part employeur
 Part salarié: Part salarié
 Pas en auto-entrepreneur: Pas en auto-entrepreneur
@@ -888,6 +890,29 @@ pages:
       shortname: Comparaison des statuts
       title: "Indépendant, assimilé salarié ou auto-entrepreneur : quel régime choisir
         ?"
+    dividendes:
+      meta:
+        description: Calculez le montant de l'impôt et des cotisations sur les
+          dividendes perçus.
+        title: Dividendes
+      seo: <0>Les dividendes et distributions</0><1>A la fin de l'exercice d'une
+        société, le solde exercice précédent peut être affecté au versement de
+        dividendes et distributions. Du point de vue des bénéficiaires, ce sont
+        des revenus de capitaux mobiliers, soumis à des cotisations et une
+        impositions spécifiques.</1><2>Ce régime s'applique aux dividendes de
+        sociétés soumises à <2>l'impôt sur les sociétés</2>, aux distributions
+        (rachats de parts…) et aux boni de liquidation.</2><3>Ne sont pris en
+        compte dans ce simulateur que les cas de figure du bénéficiaire personne
+        physique et des dividendes décidés par la société.</3><4>Comment sont
+        calculés les prélèvements sur les dividendes versés ?</4><5>Les
+        dividendes peuvent être soumis au prélèvement forfaitaire unique de 30%
+        incluant imposition et contributions sociales (aussi appelé<1> flat
+        tax</1>). Par option, le barème de l'impôt peut être choisi. Ce
+        simulateur peut être utilisé pour comparer les deux régimes.</5><6>Un
+        acompte du montant de l'impôt (12,8%) est prélevé au moment du versement
+        des dividendes, sauf si le bénéficiaire remplit <2>certains
+        critères</2>.</6>
+      title: Simulateur de versement de dividendes
     ei:
       meta:
         description: Calcul du revenu à partir du chiffre d'affaires, après déduction

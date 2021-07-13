@@ -1147,8 +1147,9 @@ export function getSimulatorsData({
 					<p>
 						Les dividendes peuvent être soumis au prélèvement forfaitaire unique
 						de 30% incluant imposition et contributions sociales (aussi appelé
-						_flat tax_). Par option, le barème de l'impôt peut être choisi. Ce
-						simulateur peut être utilisé pour comparer les deux régimes.
+						<i> flat tax</i>). Par option, le barème de l'impôt peut être
+						choisi. Ce simulateur peut être utilisé pour comparer les deux
+						régimes.
 					</p>
 					<p>
 						Un acompte du montant de l'impôt (12,8%) est prélevé au moment du
