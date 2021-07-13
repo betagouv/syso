@@ -176,6 +176,7 @@ registerEvaluationFunction('rule', function evaluate(node) {
 			valeur?.missingVariables,
 			bonus(parent?.missingVariables)
 		),
+		// [XXX] [missingVars] add self-missing clearly separated from parent missing
 		...(valeur && 'unit' in valeur && { unit: valeur.unit }),
 	}
 
