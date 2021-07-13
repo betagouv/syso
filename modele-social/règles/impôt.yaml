@@ -438,8 +438,9 @@ impôt . foyer fiscal . impôt sur le revenu . décote:
     plancher: 0 €/an
 
 impôt . foyer fiscal . impôt sur le revenu . quotient familial:
+  applicable si: revenu imposable > 0
+  valeur: revenu imposable / nombre de parts
   unité: €/part/an
-  formule: revenu imposable / nombre de parts
 
 impôt . foyer fiscal . impôt sur le revenu . quotient familial . plafond avantage:
   formule:
@@ -492,18 +493,25 @@ impôt . foyer fiscal . impôt sur le revenu . impôt brut:
   formule:
     le maximum de:
       - impôt brut . sans plafonnement
-      - somme:
-          - recalcul:
-              règle: impôt brut . sans plafonnement
-              avec:
-                nombre de parts . rattachées: 0 part
-          - (- quotient familial . plafond avantage)
+      - impôt brut . sans avantage quotient familial
 
 impôt . foyer fiscal . impôt sur le revenu . impôt brut . sans plafonnement:
-  formule:
-    produit:
-      assiette: impôt brut par part
-      facteur: nombre de parts
+  applicable si: impôt brut par part > 0  # [XXX] [missingVars] not sure this changes anything
+  produit:
+    assiette: impôt brut par part
+    facteur: nombre de parts
+
+impôt . foyer fiscal . impôt sur le revenu . impôt brut . sans avantage quotient familial:
+  applicable si: sans part > 0 # [XXX] [missingVars] not sure about the approach
+  somme:
+    - sans part
+    - (- quotient familial . plafond avantage)
+
+impôt . foyer fiscal . impôt sur le revenu . impôt brut . sans avantage quotient familial . sans part:
+  recalcul:
+    règle: impôt brut . sans plafonnement
+    avec:
+      nombre de parts . rattachées: 0 part
 
 impôt . foyer fiscal . CEHR:
   unité: €/an
