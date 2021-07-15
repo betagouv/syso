@@ -32,9 +32,7 @@ export default function IndépendantExplanation() {
 			<WhenNotApplicable dottedName="dirigeant . indépendant . cotisations et contributions . début activité">
 				<CotisationsRégularisation />
 			</WhenNotApplicable>
-			<Condition expression="entreprise . activité . libérale réglementée">
-				<PLExplanation />
-			</Condition>
+			<PLExplanation />
 			<Condition expression="dirigeant . rémunération . nette après impôt > 0 €/an">
 				<section>
 					<h2>Répartition du revenu</h2>
